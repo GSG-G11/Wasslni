@@ -16,6 +16,7 @@
   },
   "plugins": ["@typescript-eslint"],
   "rules": {
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "no-unused-vars": "warn"
   }
 }
