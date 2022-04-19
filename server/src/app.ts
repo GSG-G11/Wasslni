@@ -1,6 +1,9 @@
 import express from 'express';
+import * as dotenv from 'dotenv';
 import { clientError, serverError } from './controllers';
 import router from './routes';
+
+dotenv.config();
 
 const app = express();
 
