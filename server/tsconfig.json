@@ -5,7 +5,7 @@
     "esModuleInterop": true,
     "outDir": "dist"
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "src/utils/twilio/verifySMS.ts"],
   "ts-node": {
     // It is faster to skip typechecking.
     // Remove if you want ts-node to do typechecking.
