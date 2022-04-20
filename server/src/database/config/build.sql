@@ -7,7 +7,8 @@ id SERIAL PRIMARY KEY,
 phoneNumber INT UNIQUE NOT NULL,
 name VARCHAR(400) NOT NULL,
 password VARCHAR (400) NOT NULL,
-location TEXT NOT NULL,
+lng INT NOT NULL,
+lat INT NOT NULL,
 image TEXT NOT NULL,
 isSeller BOOLEAN 
 );
