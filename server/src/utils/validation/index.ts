@@ -1,3 +1,4 @@
 import signUpSchema from './signUpSchema';
+import smsSchema from './smsSchema';
 
-export default signUpSchema;
+export { signUpSchema, smsSchema };

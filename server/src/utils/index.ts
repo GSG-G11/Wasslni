@@ -1,7 +1,7 @@
 import CustomError from './errors';
 import { createToken, verifyToken } from './jwt';
-import signUpSchema from './validation';
+import { signUpSchema, smsSchema } from './validation';
 
 export {
-  CustomError, signUpSchema, createToken, verifyToken,
+  CustomError, signUpSchema, smsSchema, createToken, verifyToken,
 };

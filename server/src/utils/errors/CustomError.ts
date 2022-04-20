@@ -1,6 +1,6 @@
-const CustomError = (message: string, status: number) => {
+const CustomError = (message: string, status: number):void => {
   const error = new Error(message);
-  const customError = { ...error, status };
+  const customError:any = { ...error, status };
 
   return customError;
 };

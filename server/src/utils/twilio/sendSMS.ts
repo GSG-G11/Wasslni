@@ -9,8 +9,7 @@ const client = new Twilio(
   process.env.TWILIO_AUTH_TOKEN,
 );
 
-const sendSMS = async (req, res, next) => {
-  const { phoneNumber } = req.body;
+const sendSMS = async (res, next, phoneNumber) => {
   try {
     const verification = await client
       .verify.services(process.env.TWILIO_VERIFY_SERVICES).verifications.create({
