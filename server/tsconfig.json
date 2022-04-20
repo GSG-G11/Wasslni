@@ -1,6 +1,22 @@
+// {
+//   "compilerOptions": {
+//     "sourceMap": true,
+//     "target": "es2017",
+//     "outDir": "./dist",
+//     "baseUrl": "./src",
+//     "moduleResolution": "node",
+//     "isolatedModules": true,
+//     "esModuleInterop": true,
+//     "paths": {
+//       "*": ["*", "generated/*"]
+//     }
+//   },
+//   "include": ["src/**/*.ts"],
+//   "exclude": ["node_modules"]
+// }
 {
   "compilerOptions": {
-    "module": "commonjs",
+    // "module": "commonjs",
     "isolatedModules": true,
     "esModuleInterop": true,
     "outDir": "dist"
