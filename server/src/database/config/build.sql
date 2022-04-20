@@ -26,7 +26,7 @@ seller_number INT REFERENCES users(phoneNumber) ON DELETE CASCADE ON UPDATE CASC
 CREATE TABLE route(
 id SERIAL PRIMARY KEY,
 distance FLOAT,
-time TIME,
+time text,
 coordinates JSON,
 parcel_id INT REFERENCES parcel(id) ON DELETE CASCADE ON UPDATE CASCADE    
 );
