@@ -1,3 +1,4 @@
 import signUpDB from './signUpDB';
+import checkPhoneNumber from './checkPhoneNumber';
 
-export default signUpDB;
+export default { signUpDB, checkPhoneNumber };
