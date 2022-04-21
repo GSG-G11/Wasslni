@@ -1,3 +1,3 @@
 import parcelDetails from './parcelDetails';
 
-export default parcelDetails;
+export { parcelDetails };

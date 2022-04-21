@@ -6,7 +6,7 @@ const parcelDetails = async (req: any, res: any) => {
   if (rows.length === 0) {
     return res.status(404).json({ message: 'Parcel not found' });
   }
-  return res.status(200).json({ message: 'Parcel found', data: rows[0] });
+  return res.status(200).json({ message: 'parcels uploaded successfully', data: rows[0] });
 };
 
 export default parcelDetails;
