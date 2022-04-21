@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { signUp, SMS } from '../controllers';
+import { signUp, SMS, login } from '../controllers';
 
 const router = Router();
 
@@ -8,5 +8,6 @@ router.get('/', (req, res) => {
 });
 router.post('/sms', SMS);
 router.post('/signup', signUp);
+router.post('/login', login);
 
 export default router;

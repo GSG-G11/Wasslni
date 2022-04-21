@@ -22,7 +22,7 @@ const signUp = async (req, res, next) => {
       res.cookie('token', token, {
         httpOnly: true,
       })
-        .status(201).json({ messege: 'signup succeeded' });
+        .status(201).json({ message: 'signup succeeded' });
     } else {
       next(CustomError('your code dose not match the code was send to your phone', 406));
     }

@@ -1,3 +1,3 @@
-import { checkPhoneNumber, signUpDB } from './auth';
+import { checkPhoneNumber, signUpDB } from './userQuieries';
 
 export { checkPhoneNumber, signUpDB };
