@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": " NODE_ENV=production node dist",
-    "dev": "cross-env  NODE_ENV=development nodemon src/index.ts ",
+    "dev": "cross-env  NODE_ENV=development ts-node --project tsconfig.json src/index.ts ",
     "build": "tsc -p tsconfig.json"
   },
   "keywords": [],
