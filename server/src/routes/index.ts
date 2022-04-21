@@ -1,12 +1,12 @@
 import { Router } from 'express';
-import { sendSMS, verifySMS } from '../utils/twilio';
+import { signUp, SMS } from '../controllers';
 
 const router = Router();
 
 router.get('/', (req, res) => {
   res.send('Hello World');
 });
-router.post('/signup', sendSMS);
-router.post('/verifySMS', verifySMS);
+router.post('/sms', SMS);
+router.post('/signup', signUp);
 
 export default router;
