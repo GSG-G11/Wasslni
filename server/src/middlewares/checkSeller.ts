@@ -10,9 +10,9 @@ const checkSeller = async (req: any, res: any, next: any) => {
       throw new CustomError('You are not authorized', 401);
     }
     const decoded:any = await verifyToken(token, process.env.PRIVATE_KEY);
-    const { id, isSeller } = decoded;
+    const { id, role } = decoded;
 
-    if (!isSeller) {
+    if (!role) {
       throw new CustomError('You are not authorized', 401);
     }
     req.userId = id;

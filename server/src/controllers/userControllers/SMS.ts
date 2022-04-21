@@ -1,17 +1,23 @@
-import { smsSchema, CustomError } from '../../utils';
-import { sendSMS } from '../../utils/twilio';
-import checkPhoneNumber from '../../database/queries';
+import { sendSMS, smsSchema, CustomError } from '../../utils';
+import { checkPhoneNumber } from '../../database/queries';
 
-const SMS = (req, res, next) => {
+const SMS = async (req, res, next) => {
   const { phoneNumber } = req.body;
-  smsSchema.validateAsync(req.body)
-    .then(({ phoneNumberDB }) => checkPhoneNumber(phoneNumberDB))
-    .then((data) => {
-      if (!data.rows.length) {
-        sendSMS(res, next, phoneNumber);
-      }
-      throw new CustomError('phone number is EXISTS', 401);
-    })
-    .catch((error) => next(error));
+  try {
+    await smsSchema.validateAsync(req.body);
+    const { rowCount } = await checkPhoneNumber(phoneNumber);
+    if (rowCount) {
+      throw CustomError('user already registered ', 400);
+    }
+    await sendSMS(phoneNumber);
+    return res.status(200).json({ message: 'message send to user', data: phoneNumber });
+  } catch (error) {
+    if (error.details) {
+      return next(CustomError(error.details[0].message, 400));
+    } if (error.status === 404) {
+      return next(CustomError('twilio can not send message ', 503));
+    }
+    return next(error);
+  }
 };
 export default SMS;

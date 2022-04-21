@@ -1,3 +1,4 @@
 import SMS from './SMS';
+import signUp from './signUp';
 
-export default SMS;
+export { signUp, SMS };

@@ -1,3 +1,3 @@
-import { checkPhoneNumber } from './auth';
+import { checkPhoneNumber, signUpDB } from './auth';
 
-export default checkPhoneNumber;
+export { checkPhoneNumber, signUpDB };

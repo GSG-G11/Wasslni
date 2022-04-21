@@ -1,5 +1,5 @@
 import { clientError, serverError } from './errors';
-import SMS from './userControllers';
+import { SMS, signUp } from './userControllers';
 
 export { clientError, serverError };
-export default SMS;
+export { SMS, signUp };
