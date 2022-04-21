@@ -1,3 +1,3 @@
-import { checkPhoneNumber, signUpDB } from './userQuieries';
+import { checkPhoneNumber, getUserById, signUpDB } from './userQuieries';
 
-export { checkPhoneNumber, signUpDB };
+export { checkPhoneNumber, signUpDB, getUserById };
