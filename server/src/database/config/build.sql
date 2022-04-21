@@ -19,8 +19,8 @@ name VARCHAR(400) NOT NULL,
 deliveryPrice FLOAT,
 price FLOAT,
 status VARCHAR(200),
-client_number text REFERENCES users(phoneNumber) ON DELETE CASCADE ON UPDATE CASCADE,
-seller_number text REFERENCES users(phoneNumber) ON DELETE CASCADE ON UPDATE CASCADE  
+client_id INT REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE,
+seller_id INT REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE  
 );
 
 CREATE TABLE route(
