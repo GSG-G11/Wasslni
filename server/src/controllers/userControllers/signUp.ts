@@ -13,8 +13,9 @@ const signUp = async (req, res) => {
   if (status === 'approved') {
     const hashedPassword = await hashPassword(password);
     const urlImg = await cloudinaryImg(img);
-    // eslint-disable-next-line max-len
-    const { rows } = await signUpDB(userName, phoneNumber, urlImg, hashedPassword, lng, lat, isSeller);
+    const { rows } = await signUpDB({
+      userName, phoneNumber, urlImg, password: hashedPassword, lng, lat, isSeller,
+    });
     const { id } = rows[0];
     const role = rows[0].isSeller;
     const token = await createToken({ id, role });
