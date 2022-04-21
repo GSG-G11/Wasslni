@@ -7,5 +7,15 @@ import cloudinaryImg from './cloudinary';
 
 export {
   // eslint-disable-next-line max-len
-  cloudinaryImg, CustomError, signUpSchema, smsSchema, createToken, verifyToken, verifySMS, sendSMS, comparePassword, hashPassword, loginSchema
+  cloudinaryImg,
+  CustomError,
+  signUpSchema,
+  smsSchema,
+  createToken,
+  verifyToken,
+  verifySMS,
+  sendSMS,
+  comparePassword,
+  hashPassword,
+  loginSchema,
 };

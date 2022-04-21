@@ -1,25 +1,21 @@
 import * as dotenv from 'dotenv';
-import { CustomError, verifyToken } from '../utils';
+import { verifyToken } from '../utils';
 
 dotenv.config();
 
 const checkSeller = async (req: any, res: any, next: any) => {
-  try {
-    const { token } = req.cookies;
-    if (!token) {
-      throw new CustomError('You are not authorized', 401);
-    }
-    const decoded:any = await verifyToken(token, process.env.PRIVATE_KEY);
-    const { id, role } = decoded;
-
-    if (!role) {
-      throw new CustomError('You are not authorized', 401);
-    }
-    req.userId = id;
-    next();
-  } catch (error) {
-    next(error);
+  const { token } = req.cookies;
+  if (!token) {
+    return res.status(401).json({ message: 'Unauthorized' });
   }
+  const decoded: any = await verifyToken(token, process.env.PRIVATE_KEY);
+  const { id, role } = decoded;
+
+  if (!role) {
+    return res.status(401).json({ message: 'Unauthorized' });
+  }
+  req.userId = id;
+  return next();
 };
 
 export default checkSeller;
