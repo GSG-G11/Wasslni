@@ -1,5 +1,5 @@
 import { clientError, serverError } from './errors';
-import { SMS, signUp } from './userControllers';
+import { SMS, signUp, login } from './userControllers';
 
 export { clientError, serverError };
-export { SMS, signUp };
+export { SMS, signUp, login };
