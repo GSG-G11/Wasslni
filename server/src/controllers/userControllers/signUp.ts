@@ -19,7 +19,7 @@ const signUp = async (req, res, next) => {
       const { id } = rows[0];
       const role = rows[0].isSeller;
       const token = await createToken({ id, role });
-      res.cookie('access_token', token, {
+      res.cookie('token', token, {
         httpOnly: true,
       })
         .status(201).json({ messege: 'signup succeeded' });
