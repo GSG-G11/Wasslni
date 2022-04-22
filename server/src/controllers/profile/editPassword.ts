@@ -11,6 +11,7 @@ const editPassword = async (req, res) => {
   if (!isMatch) {
     return res.status(400).json({ message: 'wrong password !' });
   }
+  res.status(200).json({ message: 'your new password matching your old password' });
   const hashedNewPassword = await hashPassword(newPassword);
   await editPasswordDB({ hashedNewPassword, id });
   return res.status(200).json({ message: 'password edited' });
