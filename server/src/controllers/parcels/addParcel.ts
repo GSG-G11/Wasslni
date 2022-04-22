@@ -13,11 +13,15 @@ const addParcel = async (req, res) => {
     name, deliveryPrice, price, status, phoneNumber, image,
   } = req.body;
   await addParcelSchema.validateAsync(req.body);
-  const { rowCount } = await checkPhoneNumber(phoneNumber);
+  const { rowCount, rows: buyerData } = await checkPhoneNumber(phoneNumber);
   if (!rowCount) {
     return res.status(400).json({ message: ' buyer phone number was not found' });
   }
+  const { id: buyerId } = buyerData[0];
   const urlImg = await cloudinaryImg(image);
-  // addParcelQuery();
+  await addParcelQuery(({
+    name, deliveryPrice, price, status, urlImg, buyerId, sellerId,
+  }));
+  res.status(201).json({ message: 'The parcel has been added successfully ' });
 };
 export default addParcel;
