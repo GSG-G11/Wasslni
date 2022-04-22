@@ -6,5 +6,6 @@ const addParcelSchema = joi.object({
   price: joi.number().required(),
   status: joi.boolean().required(),
   phoneNumber: joi.string().length(13).required(),
+  image: joi.string().required(),
 });
 export default addParcelSchema;
