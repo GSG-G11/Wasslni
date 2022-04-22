@@ -18,9 +18,9 @@ id SERIAL PRIMARY KEY,
 name VARCHAR(400) NOT NULL,   
 deliveryPrice FLOAT,
 price FLOAT,
-status VARCHAR(200),
-buyer_id INT REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE,
-seller_id INT REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE 
+status BOOLEAN,
+client_number text REFERENCES users(phoneNumber) ON DELETE CASCADE ON UPDATE CASCADE,
+seller_number text REFERENCES users(phoneNumber) ON DELETE CASCADE ON UPDATE CASCADE  
 );
 
 CREATE TABLE route(
