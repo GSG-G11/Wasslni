@@ -9,7 +9,8 @@ const login = async (req, res) => {
     return res.status(400).json({ message: 'your phone number was not found, you must sign up' });
   }
   const hashedPassword = rows[0].password;
-  const { id, role } = rows[0];
+  const { id } = rows[0];
+  const role = rows[0].isseller;
   const isMatch: any = await comparePassword(password, hashedPassword);
   if (!isMatch) {
     return res.status(400).json({ message: 'phone number or password wrong' });
