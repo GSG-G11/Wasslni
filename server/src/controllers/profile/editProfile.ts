@@ -20,12 +20,10 @@ const editProfile = async (req: Request, res: Response) => {
   }
   const urlImg = await cloudinaryImg(img);
 
-  const { rowCount: edited } = await editProfileQuery({
+  await editProfileQuery({
     id, userName, urlImg, lat, lng, phoneNumber,
   });
-  if (!edited) {
-    return res.status(400).json({ message: 'edit profil failed' });
-  }
+
   return res.status(200).json({ message: 'edit profile successfully' });
 };
 
