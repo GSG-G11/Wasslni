@@ -1,4 +1,6 @@
 import parcelDetailsDB from './parcelDetailsDB';
 import checkRoleDB from './checkRoleDB';
+import addParcelQuery from './addParcelQuery';
 
-export { parcelDetailsDB, checkRoleDB };
+export { parcelDetails, checkRoleDB, addParcelQuery };
+

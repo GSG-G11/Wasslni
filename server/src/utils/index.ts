@@ -1,5 +1,7 @@
 import { createToken, verifyToken } from './jwt';
-import { loginSchema, signUpSchema, smsSchema } from './validation';
+import {
+  addParcelSchema, loginSchema, signUpSchema, smsSchema,
+} from './validation';
 import { verifySMS, sendSMS } from './twilio';
 import { comparePassword, hashPassword } from './password';
 import cloudinaryImg from './cloudinary';
@@ -16,4 +18,6 @@ export {
   comparePassword,
   hashPassword,
   loginSchema,
+  addParcelSchema,
+
 };
