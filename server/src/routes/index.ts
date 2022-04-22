@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import {
   signUp, SMS, login, getProfile, parcelDetails, addParcel,
+
 } from '../controllers';
 import { asyncMiddleware, checkAuth } from '../middleware';
 
@@ -15,5 +16,6 @@ router.post('/login', asyncMiddleware(login));
 router.get('/profile', asyncMiddleware(checkAuth), asyncMiddleware(getProfile));
 router.get('/parcel/:id', asyncMiddleware(checkAuth), asyncMiddleware(parcelDetails));
 router.post('/parcel', asyncMiddleware(checkAuth), asyncMiddleware(addParcel));
+
 
 export default router;
