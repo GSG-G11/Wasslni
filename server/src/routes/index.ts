@@ -14,6 +14,6 @@ router.post('/signup', asyncMiddleware(signUp));
 router.post('/login', asyncMiddleware(login));
 router.get('/profile', asyncMiddleware(checkAuth), asyncMiddleware(getProfile));
 router.get('/parcel/:id', asyncMiddleware(checkAuth), asyncMiddleware(parcelDetails));
-router.post('/parcel', asyncMiddleware(addParcel));
+router.post('/parcel', asyncMiddleware(checkAuth), asyncMiddleware(addParcel));
 
 export default router;
