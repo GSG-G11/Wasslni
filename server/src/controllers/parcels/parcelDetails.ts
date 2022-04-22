@@ -2,7 +2,7 @@ import { parcelDetailsDB } from '../../database/queries';
 
 const parcelDetails = async (req: any, res: any) => {
   const { id } = req.params;
-  const userId = 1;
+  const { userId } = req;
   const { rowCount, rows } = await parcelDetailsDB({ id, userId });
   if (rowCount === 0) {
     return res.status(404).json({ message: 'Parcel not found' });
