@@ -14,6 +14,7 @@ const login = async (req, res) => {
   if (!isMatch) {
     return res.status(400).json({ message: 'phone number or password wrong' });
   }
+
   const token = await createToken({ id, role });
   return res
     .status(201)
