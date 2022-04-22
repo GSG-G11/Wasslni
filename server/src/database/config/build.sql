@@ -26,10 +26,9 @@ seller_id INT REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
 
 CREATE TABLE route(
 id SERIAL PRIMARY KEY,
-distance FLOAT,
-time text,
-coordinates JSON,
+distance_KM FLOAT,
+duration_MINS FLOAT,
+coordinates text,
 parcel_id INT REFERENCES parcel(id) ON DELETE CASCADE ON UPDATE CASCADE    
 );
-
 COMMIT;

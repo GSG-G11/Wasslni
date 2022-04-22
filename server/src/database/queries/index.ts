@@ -2,8 +2,9 @@ import { checkPhoneNumber, getUserById, signUpDB } from './userQuieries';
 import {
   parcelDetailsDB, checkRoleDB, deleteParcelDB, getParcelsQuery, addParcelQuery,
 } from './parcelsQueries';
+import { addRouteQuery } from './routeQueries';
 
 export {
   checkPhoneNumber, signUpDB, getUserById, parcelDetailsDB,
-  checkRoleDB, deleteParcelDB, getParcelsQuery, addParcelQuery,
+  checkRoleDB, deleteParcelDB, getParcelsQuery, addParcelQuery, addRouteQuery,
 };
