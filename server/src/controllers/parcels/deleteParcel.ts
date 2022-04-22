@@ -3,7 +3,7 @@ import { deleteParcelDB, parcelDetailsDB } from '../../database/queries';
 const deleteParcel = async (req, res) => {
   const { id } = req.params;
   const { userId } = req;
-  const { rowCount, rows } = await parcelDetailsDB(id, userId);
+  const { rowCount, rows } = await parcelDetailsDB({ id, userId });
   if (!rowCount) {
     return res.status(404).json({ message: 'No Parcel !' });
   } if (rows[0].status) {
