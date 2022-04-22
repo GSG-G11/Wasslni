@@ -1,4 +1,5 @@
-import parcelDetails from './parcelDetailsDB';
+import parcelDetailsDB from './parcelDetailsDB';
 import checkRoleDB from './checkRoleDB';
+import getParcelsQuery from './getParcelsQuery';
 
-export { parcelDetails, checkRoleDB };
+export { parcelDetailsDB, checkRoleDB, getParcelsQuery };

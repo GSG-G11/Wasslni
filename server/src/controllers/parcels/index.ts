@@ -1,3 +1,4 @@
 import parcelDetails from './parcelDetails';
+import getParcels from './getParcels';
 
-export { parcelDetails };
+export { parcelDetails, getParcels };

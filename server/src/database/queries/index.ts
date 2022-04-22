@@ -1,6 +1,6 @@
 import { checkPhoneNumber, getUserById, signUpDB } from './userQuieries';
-import { parcelDetails, checkRoleDB } from './parcelsQueries';
+import { parcelDetailsDB, checkRoleDB, getParcelsQuery } from './parcelsQueries';
 
 export {
-  checkPhoneNumber, signUpDB, getUserById, parcelDetails, checkRoleDB,
+  checkPhoneNumber, signUpDB, getUserById, parcelDetailsDB, checkRoleDB, getParcelsQuery,
 };
