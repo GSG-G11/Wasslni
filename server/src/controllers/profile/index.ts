@@ -1,3 +1,4 @@
+import editProfile from './editProfile';
 import getProfile from './getProfile';
 
-export default getProfile;
+export { getProfile, editProfile };
