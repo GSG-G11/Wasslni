@@ -4,4 +4,5 @@ INSERT INTO users (phonenumber, name, password, lng, lat, image, isseller) VALUE
 ('+970599859102', 'MONTHER', '$2a$10$urn5eKcywoWsV1pXS9Dp/.KMwkv6PjZd1nBD7JrhIZhvFiDCgMly.'
 , 34.50, 31.50, 'www.varabnight.com', false);
 
-INSERT INTO parcel (name, deliveryprice, price, status, buyer_id, seller_id) VALUES ('bag', 10, 20, false, 2, 1);
+INSERT INTO parcel (name, deliveryprice, price, status, image , buyer_id,seller_id) VALUES
+ ('parcelOne', 23.0 ,45.0 ,false ,'https://res.cloudinary.com/gaza-sky-geeks/image/upload/v1650592199/zgyndbce3f5n5khucn6m.jpg ',2,1)
