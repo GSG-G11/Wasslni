@@ -17,7 +17,7 @@ const signUp = async (req, res) => {
       userName, phoneNumber, urlImg, password: hashedPassword, lng, lat, isSeller,
     });
     const { id } = rows[0];
-    const role = rows[0].isSeller;
+    const role = rows[0].isseller;
     const token = await createToken({ id, role });
     res.status(201).cookie('token', token, {
       httpOnly: true,

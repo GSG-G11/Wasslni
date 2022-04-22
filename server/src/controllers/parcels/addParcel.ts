@@ -4,11 +4,9 @@ import { addParcelSchema, cloudinaryImg } from '../../utils';
 // eslint-disable-next-line consistent-return
 const addParcel = async (req, res) => {
   const { userId } = req;
+
   const { rows } = await getUserById(userId);
-  const { isseller, id: sellerId } = rows[0];
-  if (!isseller) {
-    return res.status(400).json('you is not a seller ,  so you can not add a parcel ');
-  }
+  const { id: sellerId } = rows[0];
   const {
     name, deliveryPrice, price, status, phoneNumber, image,
   } = req.body;
