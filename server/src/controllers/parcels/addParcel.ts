@@ -1,12 +1,9 @@
-import { addParcelQuery, checkPhoneNumber, getUserById } from '../../database/queries';
+import { addParcelQuery, checkPhoneNumber } from '../../database/queries';
 import { addParcelSchema, cloudinaryImg } from '../../utils';
-
 // eslint-disable-next-line consistent-return
 const addParcel = async (req, res) => {
-  const { userId } = req;
+  const { userId: sellerId } = req;
 
-  const { rows } = await getUserById(userId);
-  const { id: sellerId } = rows[0];
   const {
     name, deliveryPrice, price, status, phoneNumber, image,
   } = req.body;
