@@ -9,7 +9,7 @@ const deleteParcel = async (req, res) => {
   } if (rows[0].status) {
     return res.status(400).json({ message: 'the parcel delivered' });
   }
-  await deleteParcelDB(id, userId);
+  await deleteParcelDB({ id, userId });
   return res.status(200).json({ message: 'parcel deleted' });
 };
 
