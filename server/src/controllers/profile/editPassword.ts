@@ -3,7 +3,7 @@ import { comparePassword, editPasswordSchema, hashPassword } from '../../utils';
 
 const editPassword = async (req, res) => {
   const { oldPassword, newPassword } = req.body;
-  const id = 1;
+  const { id } = req;
   await editPasswordSchema.validateAsync(req.body);
   const { rows } = await getUserById(id);
   const { password } = rows[0];
