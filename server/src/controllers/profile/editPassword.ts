@@ -7,6 +7,9 @@ const editPassword = async (req, res) => {
   await editPasswordSchema.validateAsync(req.body);
   const { rows } = await getUserById(id);
   const { password } = rows[0];
+  if (newPassword === password) {
+    return res.status(400).json({ message: 'new password is smeller with old one' });
+  }
   const isMatch = await comparePassword(oldPassword, password);
   if (!isMatch) {
     return res.status(400).json({ message: 'wrong password !' });
