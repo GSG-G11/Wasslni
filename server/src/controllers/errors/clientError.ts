@@ -1,5 +1,7 @@
-/* eslint-disable no-unused-vars */
-const clientError = (req: any, res: any, next: any) => {
+import { Response, Request, NextFunction } from 'express';
+
+// eslint-disable-next-line no-unused-vars
+const clientError = (req: Request, res: Response, next:NextFunction) => {
   res.status(404).json({ message: 'Page Not Found' });
 };
 

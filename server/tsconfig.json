@@ -7,7 +7,7 @@
     "lib": ["es2021", "dom"]
   },
   
-  "include": ["src/**/*.ts", "src/utils/twilio/verifySMS.ts"],
+  "include": ["src/**/*.ts", "src/utils/twilio/verifySMS.ts,src/middleware/custom.d.ts"],
   "ts-node": {
     // It is faster to skip typechecking.
     // Remove if you want ts-node to do typechecking.

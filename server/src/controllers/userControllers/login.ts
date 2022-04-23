@@ -1,7 +1,8 @@
+import { Response, Request } from 'express';
 import { loginSchema, comparePassword, createToken } from '../../utils';
 import { checkPhoneNumber } from '../../database/queries';
 
-const login = async (req, res) => {
+const login = async (req:Request, res:Response) => {
   const { phoneNumber, password } = req.body;
   await loginSchema.validateAsync(req.body);
   const { rows, rowCount } = await checkPhoneNumber(phoneNumber);
