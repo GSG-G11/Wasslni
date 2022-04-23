@@ -1,13 +1,14 @@
 import { createToken, verifyToken } from './jwt';
 import {
-  addParcelSchema, loginSchema, signUpSchema, smsSchema,
+  addParcelSchema, loginSchema, signUpSchema, smsSchema, editPasswordSchema,
+  editProfileInfoSchema,
 } from './validation';
 import { verifySMS, sendSMS } from './twilio';
 import { comparePassword, hashPassword } from './password';
 import cloudinaryImg from './cloudinary';
 
 export {
-  // eslint-disable-next-line max-len
+
   cloudinaryImg,
   signUpSchema,
   smsSchema,
@@ -19,5 +20,6 @@ export {
   hashPassword,
   loginSchema,
   addParcelSchema,
-
+  editPasswordSchema,
+  editProfileInfoSchema,
 };
