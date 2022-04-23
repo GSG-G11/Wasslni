@@ -62,44 +62,6 @@ describe('testing profile routes', () => {
       });
   });
 });
-describe('check route "api/v1/sms"  ', () => {
-  test('should return 200 when twilio send a message to the owner of the phoneNumber  ', (done) => {
-    request(app)
-      .post('/api/v1/sms')
-      .send({
-        phoneNumber: '+972567359920',
-      })
-      .expect(200)
-      .end((err) => {
-        if (err) return done(err);
-        return done();
-      });
-  });
-  test('should return 400 ( Bad request ) When the user enters a number less than and more than 13 digits ', (done) => {
-    request(app)
-      .post('/api/v1/sms')
-      .send({
-        phoneNumber: '+97256735992',
-      })
-      .expect(400)
-      .end((err) => {
-        if (err) return done(err);
-        return done();
-      });
-  });
-  test('should return 400 ( Bad request ) When user sends unexpected data type ', (done) => {
-    request(app)
-      .post('/api/v1/sms')
-      .send({
-        phoneNumber: 4,
-      })
-      .expect(400)
-      .end((err) => {
-        if (err) return done(err);
-        return done();
-      });
-  });
-});
 
 describe('check route "api/v1/login', () => {
   test('should return 201 when we have a successfully user', (done) => {
