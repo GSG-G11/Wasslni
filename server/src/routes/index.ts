@@ -1,7 +1,8 @@
+/* eslint-disable max-len */
 import { Router } from 'express';
 import {
 
-  signUp, SMS, login, getProfile, parcelDetails, getParcels, addParcel, deleteParcel, changeStatus, deleteParcel, editPassword, editProfile,
+  signUp, SMS, login, getProfile, parcelDetails, getParcels, addParcel, changeStatus, deleteParcel, editPassword, editProfile,
 
 } from '../controllers';
 
