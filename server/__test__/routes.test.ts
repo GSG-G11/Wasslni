@@ -29,7 +29,7 @@ describe('check route "api/v1/login', () => {
   test('should return 201 when we have a successfully user', (done) => {
     request(app)
       .post('/api/v1/login')
-      .send({ email: '+970595421545', password: 123456 })
+      .send({ phoneNumber: '+970595421545', password: 123456 })
       .expect(201)
       .expect('Content-Type', /json/)
       .end((err) => {
