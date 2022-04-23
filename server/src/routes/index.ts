@@ -1,7 +1,8 @@
 import { Router } from 'express';
 import {
-  signUp, SMS, login, getProfile, parcelDetails, getParcels,
-  addParcel, deleteParcel, editPassword, editProfile,
+
+  signUp, SMS, login, getProfile, parcelDetails, getParcels, addParcel, deleteParcel, changeStatus, deleteParcel, editPassword, editProfile,
+
 } from '../controllers';
 
 import { asyncMiddleware, checkAuth, checkSeller } from '../middleware';
@@ -20,6 +21,8 @@ router.get('/parcel/:id', asyncMiddleware(checkAuth), asyncMiddleware(parcelDeta
 router.delete('/parcel/:id', asyncMiddleware(checkSeller), asyncMiddleware(deleteParcel));
 router.post('/parcel', asyncMiddleware(checkSeller), asyncMiddleware(addParcel));
 router.get('/parcels', asyncMiddleware(checkAuth), asyncMiddleware(getParcels));
+router.put('/parcel/status/:id', asyncMiddleware(checkSeller), asyncMiddleware(changeStatus));
 router.put('/profile', asyncMiddleware(checkAuth), asyncMiddleware(editProfile));
+
 
 export default router;
