@@ -1,6 +1,7 @@
 import { createToken, verifyToken } from './jwt';
 import {
-  addParcelSchema, editProfileInfoSchema, loginSchema, signUpSchema, smsSchema,
+  addParcelSchema, loginSchema, signUpSchema, smsSchema, editPasswordSchema,
+  editProfileInfoSchema,
 } from './validation';
 import { verifySMS, sendSMS } from './twilio';
 import { comparePassword, hashPassword } from './password';
@@ -19,5 +20,6 @@ export {
   hashPassword,
   loginSchema,
   addParcelSchema,
+  editPasswordSchema,
   editProfileInfoSchema,
 };

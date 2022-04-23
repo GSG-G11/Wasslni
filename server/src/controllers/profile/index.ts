@@ -1,4 +1,5 @@
 import editProfile from './editProfile';
 import getProfile from './getProfile';
+import editPassword from './editPassword';
 
-export { getProfile, editProfile };
+export { getProfile, editPassword, editProfile };
