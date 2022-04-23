@@ -1,5 +1,5 @@
 import {
-  checkPhoneNumber, getUserById, signUpDB, editPasswordDB, editProfileQuery
+  checkPhoneNumber, getUserById, signUpDB, editPasswordDB, editProfileQuery,
 } from './userQuieries';
 import {
   parcelDetailsDB, checkRoleDB, deleteParcelDB, getParcelsQuery, addParcelQuery, changeStatusQuery,
@@ -7,8 +7,6 @@ import {
 import { addRouteQuery } from './routeQueries';
 
 export {
-  checkPhoneNumber, signUpDB, getUserById, parcelDetailsDB,
-
-  checkRoleDB, deleteParcelDB, getParcelsQuery, addParcelQuery, changeStatusQuery, editPasswordDB, addRouteQuery, editProfileQuery,
+  checkPhoneNumber, signUpDB, getUserById, parcelDetailsDB, checkRoleDB, deleteParcelDB, getParcelsQuery, addParcelQuery, changeStatusQuery, editPasswordDB, addRouteQuery, editProfileQuery,
 
 };
