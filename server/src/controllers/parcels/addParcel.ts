@@ -1,4 +1,5 @@
 import fetch from 'node-fetch';
+import { Response, Request } from 'express';
 import * as dotenv from 'dotenv';
 import {
   addParcelQuery, addRouteQuery, checkPhoneNumber, getUserById,
@@ -7,7 +8,7 @@ import { addParcelSchema, cloudinaryImg } from '../../utils';
 
 dotenv.config();
 // eslint-disable-next-line consistent-return
-const addParcel = async (req, res) => {
+const addParcel = async (req:Request, res:Response) => {
   const { userId: sellerId } = req;
   const { rows: sellerData } = await getUserById(sellerId);
   const { lng: sellerLng, lat: sellerLat } = sellerData[0];

@@ -1,7 +1,8 @@
+import { Response, Request } from 'express';
 import { editPasswordDB, getUserById } from '../../database/queries';
 import { comparePassword, editPasswordSchema, hashPassword } from '../../utils';
 
-const editPassword = async (req, res) => {
+const editPassword = async (req:Request, res:Response) => {
   const { oldPassword, newPassword } = req.body;
   const { userId } = req;
   await editPasswordSchema.validateAsync(req.body);

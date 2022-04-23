@@ -1,4 +1,6 @@
-const asyncMiddleware = (handler) => async (req, res, next) => {
+import { Response, Request, NextFunction } from 'express';
+
+const asyncMiddleware = (handler) => async (req:Request, res:Response, next:NextFunction) => {
   try {
     await handler(req, res, next);
   } catch (error) {

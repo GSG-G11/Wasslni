@@ -1,10 +1,10 @@
-/* eslint-disable consistent-return */
+import { Response, Request } from 'express';
 import { signUpDB } from '../../database/queries';
 import {
   signUpSchema, verifySMS, hashPassword, cloudinaryImg, createToken,
 } from '../../utils';
 
-const signUp = async (req, res) => {
+const signUp = async (req:Request, res:Response) => {
   const {
     phoneNumber, code, img, userName, password, lng, lat, isSeller,
   } = req.body;
@@ -19,12 +19,11 @@ const signUp = async (req, res) => {
     const { id } = rows[0];
     const role = rows[0].isseller;
     const token = await createToken({ id, role });
-    res.status(201).cookie('token', token, {
+    return res.status(201).cookie('token', token, {
       httpOnly: true,
     })
       .json({ message: 'signup succeeded' });
-  } else {
-    return res.status(406).json({ message: 'your code dose not match the code was send to your phone' });
   }
+  return res.status(406).json({ message: 'your code does not match the code was send to your phone' });
 };
 export default signUp;

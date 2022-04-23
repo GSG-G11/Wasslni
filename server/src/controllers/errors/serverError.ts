@@ -1,5 +1,6 @@
+import { Response, Request, NextFunction } from 'express';
 // eslint-disable-next-line no-unused-vars
-const serverError = (err, req, res, next) => {
+const serverError = (err:any, req:Request, res:Response, next:NextFunction) => {
   if (err.details) {
     return res.status(400).json({ message: err.details[0].message });
   }

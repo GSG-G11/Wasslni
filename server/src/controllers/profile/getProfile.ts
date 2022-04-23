@@ -1,6 +1,7 @@
+import { Response, Request } from 'express';
 import { getUserById } from '../../database/queries';
 
-const getProfile = async (req: any, res: any) => {
+const getProfile = async (req:Request, res: Response) => {
   const { userId } = req;
 
   const { rows } = await getUserById(userId);

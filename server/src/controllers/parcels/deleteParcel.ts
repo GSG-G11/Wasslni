@@ -1,6 +1,7 @@
+import { Response, Request } from 'express';
 import { deleteParcelDB, parcelDetailsDB } from '../../database/queries';
 
-const deleteParcel = async (req, res) => {
+const deleteParcel = async (req:Request, res:Response) => {
   const { id } = req.params;
   const { userId } = req;
   const { rowCount, rows } = await parcelDetailsDB({ id, userId });
