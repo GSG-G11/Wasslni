@@ -1,7 +1,8 @@
+import { Response, Request } from 'express';
 import { sendSMS, smsSchema } from '../../utils';
 import { checkPhoneNumber } from '../../database/queries';
 
-const SMS = async (req, res) => {
+const SMS = async (req:Request, res:Response) => {
   const { phoneNumber } = req.body;
   await smsSchema.validateAsync(req.body);
   const { rowCount } = await checkPhoneNumber(phoneNumber);

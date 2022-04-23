@@ -1,9 +1,10 @@
+import { Response, Request, NextFunction } from 'express';
 import * as dotenv from 'dotenv';
 import { verifyToken } from '../utils';
 
 dotenv.config();
 
-const checkSeller = async (req: any, res: any, next: any) => {
+const checkSeller = async (req: Request, res: Response, next: NextFunction) => {
   const { token } = req.cookies;
   if (!token) {
     return res.status(401).json({ message: 'Unauthorized' });

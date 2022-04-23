@@ -1,6 +1,7 @@
+import { Response, Request } from 'express';
 import { getParcelsQuery } from '../../database/queries';
 
-const getParcels = async (req:any, res:any) => {
+const getParcels = async (req:Request, res:Response) => {
   const { userId } = req;
 
   const { rows, rowCount } = await getParcelsQuery(userId);

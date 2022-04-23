@@ -17,7 +17,7 @@ router.post('/sms', asyncMiddleware(SMS));
 router.post('/signup', asyncMiddleware(signUp));
 router.post('/login', asyncMiddleware(login));
 router.get('/profile', asyncMiddleware(checkAuth), asyncMiddleware(getProfile));
-router.put('/profile', asyncMiddleware(checkAuth), asyncMiddleware(editPassword));
+router.put('/profile/password', asyncMiddleware(checkAuth), asyncMiddleware(editPassword));
 router.get('/parcel/:id', asyncMiddleware(checkAuth), asyncMiddleware(parcelDetails));
 router.delete('/parcel/:id', asyncMiddleware(checkSeller), asyncMiddleware(deleteParcel));
 router.post('/parcel', asyncMiddleware(checkSeller), asyncMiddleware(addParcel));
