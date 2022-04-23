@@ -36,11 +36,9 @@ const addParcel = async (req, res) => {
     name, deliveryPrice, price, status, urlImg, buyerId, sellerId,
   }));
   const { id: parcelId } = rows[0];
-  const { rows: dd } = await addRouteQuery({
+  await addRouteQuery({
     distanceKM, durationMINS, coordinates, parcelId,
   });
-  console.log(dd[0].coordinates);
-
   res.status(201).json({ message: 'The parcel has been added successfully ' });
 };
 export default addParcel;
