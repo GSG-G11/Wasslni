@@ -1,7 +1,7 @@
 import connection from '../../config/connection';
 
-const changeStatusQuery = ({ sellerId, ParcelId }) => connection.query({
+const changeStatusQuery = ({ sellerId, parcelId }) => connection.query({
   text: 'UPDATE parcel SET status = true WHERE (id=$1 AND seller_id=$2)',
-  values: [ParcelId, sellerId],
+  values: [parcelId, sellerId],
 });
 export default changeStatusQuery;
