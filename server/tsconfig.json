@@ -3,8 +3,10 @@
     // "module": "commonjs",
     "isolatedModules": true,
     "esModuleInterop": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "lib": ["es2021", "dom"]
   },
+  
   "include": ["src/**/*.ts", "src/utils/twilio/verifySMS.ts"],
   "ts-node": {
     // It is faster to skip typechecking.
