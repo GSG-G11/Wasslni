@@ -1,13 +1,20 @@
 {
   "compilerOptions": {
     // "module": "commonjs",
-    "isolatedModules": true,
+    "isolatedModules": false,
     "esModuleInterop": true,
     "outDir": "dist",
-    "lib": ["es2021", "dom"]
+    "lib": ["es2021", "dom"],
+    "types": [
+      "@types/jest"
+      ]
   },
-  
+
   "include": ["src/**/*.ts", "src/utils/twilio/verifySMS.ts"],
+  "exclude": [
+    "test.ts",
+    "**/*.spec.ts"
+  ],
   "ts-node": {
     // It is faster to skip typechecking.
     // Remove if you want ts-node to do typechecking.
