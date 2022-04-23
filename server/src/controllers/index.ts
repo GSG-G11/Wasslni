@@ -1,5 +1,5 @@
 import { clientError, serverError } from './errors';
-import { getProfile, editPassword } from './profile';
+import { getProfile, editPassword, editProfile } from './profile';
 import { SMS, signUp, login } from './userControllers';
 import {
   parcelDetails, getParcels, addParcel, deleteParcel,
@@ -8,5 +8,5 @@ import {
 export {
   clientError, serverError, SMS, signUp, login,
   getProfile, parcelDetails, getParcels, addParcel,
-  deleteParcel, editPassword,
+  deleteParcel, editPassword, editProfile
 };
