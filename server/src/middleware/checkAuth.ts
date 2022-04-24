@@ -10,8 +10,9 @@ const checkAuth = async (req: Request, res: Response, next: NextFunction) => {
     return res.status(401).json({ message: 'Unauthorized' });
   }
   const decoded: any = await verifyToken(token, process.env.PRIVATE_KEY);
-  const { id } = decoded;
+  const { id, role } = decoded;
   req.userId = id;
+  req.role = role;
   return next();
 };
 
