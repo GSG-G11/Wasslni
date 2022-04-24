@@ -20,6 +20,7 @@ deliveryPrice FLOAT,
 price FLOAT,
 status BOOLEAN,
 image text ,
+created_at timestamp NOT NULL DEFAULT NOW(),
 buyer_id INT REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE,
 seller_id INT REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE  
 );
