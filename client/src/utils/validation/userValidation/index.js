@@ -1,4 +1,5 @@
 import smsValidation from './smsValidation';
 import signupValidation from './signupValidation';
+import loginValidation from './loginValidation';
 
-export { smsValidation, signupValidation };
+export { smsValidation, signupValidation, loginValidation };

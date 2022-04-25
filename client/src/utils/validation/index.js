@@ -1,3 +1,3 @@
-import { signupValidation, smsValidation } from './userValidation';
+import { signupValidation, smsValidation, loginValidation } from './userValidation';
 
-export { signupValidation, smsValidation };
+export { signupValidation, smsValidation, loginValidation };
