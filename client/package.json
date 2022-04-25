@@ -10,6 +10,7 @@
     "formik": "^2.2.9",
     "node-sass": "^7.0.1",
     "prop-types": "^15.8.1",
+    "props-type": "^1.0.1",
     "react": "^18.0.0",
     "react-bootstrap": "^2.3.0",
     "react-dom": "^18.0.0",
