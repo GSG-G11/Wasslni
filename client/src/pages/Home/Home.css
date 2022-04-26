@@ -33,8 +33,17 @@ p{
     }
    
 }
+@media(max-width : 725px){
+    p{
+        font-size: 20px;
+    }
+    .home-page{
+        background-image: url(../../assets/homeRes.png);
+    }
+}
 @media(max-width : 500px){
     p{
         font-size: 16px;
     }
+   
 }
