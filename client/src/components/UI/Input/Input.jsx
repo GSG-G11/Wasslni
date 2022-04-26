@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import TextError from '../../Form/ErrorMsg/ErrorMsg';
 
 function Input({
-  name, type, placeholder, onChange, handleChange, ...props
+  name, type, placeholder, onChange, ...props
 }) {
   return (
     <div className=" m-4">
@@ -17,8 +17,7 @@ function Input({
         name={name}
         type={type}
         placeholder={placeholder}
-        onchange={onChange}
-        handleChange={handleChange}
+        onChange={onChange}
         {...props}
       />
 
