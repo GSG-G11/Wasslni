@@ -4,7 +4,7 @@ import './Property.css';
 
 function Property({ keyWord, value }) {
   return (
-    <div className="clientContainer">
+    <div className="parcelContainer">
       <span className="keyWord">
         {keyWord}
         :
