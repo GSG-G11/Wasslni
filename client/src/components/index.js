@@ -1,4 +1,7 @@
+import Card from './Card/Card';
 import { Title, Button, Logo } from './UI';
 
 // eslint-disable-next-line import/prefer-default-export
-export { Title, Button, Logo };
+export {
+  Title, Button, Logo, Card,
+};
