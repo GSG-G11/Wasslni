@@ -32,6 +32,12 @@ function Map(props) {
       );
     if (setLat && setLng) {
       map.current.on('load', () => {
+        if (lat && lng) {
+          new mapboxgl.Marker({
+            color: '#CA011A',
+          })
+            .setLngLat([lng, lat]).addTo(map.current);
+        }
         // Add a data source containing GeoJSON data.
         map.current.addSource('GazaStrip', {
           type: 'geojson',
