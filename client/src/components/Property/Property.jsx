@@ -4,12 +4,12 @@ import './Property.css';
 
 function Property({ keyWord, value }) {
   return (
-    <div className="parcelContainer">
-      <span className="keyWord">
+    <div className="parcel-container m-3">
+      <span>
         {keyWord}
         :
       </span>
-      <span className="value">{value}</span>
+      <span>{value}</span>
     </div>
   );
 }
