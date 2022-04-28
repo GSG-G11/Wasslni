@@ -1,0 +1,7 @@
+.parcel-container{
+    display: flex;
+    gap: 1%;
+    align-items: center;
+    width: 90%;
+}
+
