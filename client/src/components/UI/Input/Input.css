@@ -1,13 +1,1 @@
 
-input{
-    width: 40% !important;
-}
-@media screen and (max-width: 600px) {
-    .input-container{
-        width: 100%;
-    }
-    input{
-        width: 100% !important;
-    }
-}
-    
