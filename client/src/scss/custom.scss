@@ -1,11 +1,12 @@
 $primary: #ca011a;
-$secondary: #43dde6;
+$secondary: #f0c13f;
 $dark: #364f6b;
-$light: #f0f0f0;
+$light: #fff;
 $success: rgb(19, 202, 50);
 $info: #555;
 $warning: rgb(255, 255, 0);
 $danger: rgb(180, 70, 70);
+
 
 $input-border-radius: 4px;
 $input-border-color: #f0c13f;
@@ -16,5 +17,12 @@ $input-focus-border-width: 2px;
 $input-focus-box-shadow: 0 0 0 0px;
 $input-font-size: 20px;
 
+$card-border-radius: 15px;
+// $card-border-color: #ca011a;
+// $card-border-right: 1px solid #ca011a ;
+
+.btn-primary{
+    width: 100px;
+}
 
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';

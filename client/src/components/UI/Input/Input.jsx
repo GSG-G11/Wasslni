@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { Field, ErrorMessage } from 'formik';
 import './Input.css';
@@ -9,8 +10,7 @@ function Input({
   name, type, placeholder, onChange, ...props
 }) {
   return (
-    <div className=" m-4">
-
+    <div className="form-label-group">
       <Field
         id={name}
         className="form-control"
