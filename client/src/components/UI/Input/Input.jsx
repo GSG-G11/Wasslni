@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import TextError from '../../Form/ErrorMsg/ErrorMsg';
 
 function Input({
-  name, type, placeholder, onChange, ...props
+  name, type, placeholder, ...props
 }) {
   return (
     <div className="form-label-group">
@@ -17,21 +17,21 @@ function Input({
         name={name}
         type={type}
         placeholder={placeholder}
-        onChange={onChange}
         {...props}
       />
 
+      <label htmlFor={name}>
+        {placeholder}
+        {' '}
+      </label>
       <ErrorMessage name={name} component={TextError} className="error-message" />
     </div>
   );
 }
 
 Input.propTypes = {
-
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  handleChange: PropTypes.func.isRequired,
 };
 export default Input;
