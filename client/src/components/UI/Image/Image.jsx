@@ -4,7 +4,7 @@ import { propTypes } from 'prop-types';
 // eslint-disable-next-line react/prop-types
 function Image({ alt, src }) {
   return (
-    <img alt={alt} src={src} className="img-fluid" />
+    <img alt={alt} src={src} />
   );
 }
 

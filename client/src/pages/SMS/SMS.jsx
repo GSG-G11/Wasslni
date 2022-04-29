@@ -7,7 +7,7 @@ import {
 } from '../../components';
 import { smsValidation } from '../../utils';
 import { SubmitButton } from '../../components/Form';
-import sms from '../../assets/sms.jpg';
+
 import './SMS.css';
 
 function SMS() {
@@ -16,7 +16,9 @@ function SMS() {
 
   const onSubmit = async (e) => {
     try {
-      const response = await axios.post('/api/v1/auth/sms', { phoneNumber: `+970${e.phoneNumber}` });
+      const response = await axios.post('/api/v1/auth/sms', {
+        phoneNumber: `+970${e.phoneNumber}`,
+      });
       navigate('/signup');
     } catch (err) {
       if (err.response.status === 400) {
@@ -27,33 +29,32 @@ function SMS() {
     }
   };
   return (
-    <div className="container-fluid mh-100">
-      <div className="row">
-        <div className="h-25" />
-        <div className="col-sm-1">
-          <Logo />
-        </div>
-        <div className="col-sm-6">
-          <div className="h-50">
-            <div className="h-50" />
-            <div className="h-sm-25">
-              <Title>إنشاء حساب</Title>
-            </div>
-          </div>
-          <Form initialValues={{ phoneNumber: '' }} validationSchema={smsValidation} onSubmit={onSubmit}>
-            <Input name="phoneNumber" type="text" placeholder="(55 55 55 599) أدخل رقم جوالك" />
-            {errMessage && <TextError>{errMessage}</TextError>}
-            <SubmitButton title="تأكيد" />
-          </Form>
-          <Link to="/signin" className="mt-2">هل لديك حساب بالفعل ؟</Link>
-        </div>
-        <div className="col-sm-5">
-          <div className="row">
-            <Image src={sms} alt="صورة الغلاف" />
-          </div>
-        </div>
-      </div>
-    </div>
+    <>
+      <Logo />
+
+      <Title>إنشاء حساب</Title>
+
+      <Form
+        initialValues={{ phoneNumber: '' }}
+        validationSchema={smsValidation}
+        onSubmit={onSubmit}
+      >
+
+        <Input
+          name="phoneNumber"
+          type="text"
+          placeholder="ادخل رقم هاتفك مبدوء ب 59"
+        />
+
+        {errMessage && <TextError>{errMessage}</TextError>}
+
+        <SubmitButton title="تأكيد" />
+      </Form>
+      <Link to="/signin" className="mt-2">
+        هل لديك حساب بالفعل ؟
+      </Link>
+    </>
+
   );
 }
 export default SMS;
