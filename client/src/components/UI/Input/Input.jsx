@@ -7,18 +7,19 @@ import PropTypes from 'prop-types';
 import TextError from '../../Form/ErrorMsg/ErrorMsg';
 
 function Input({
-  name, type, placeholder,
+  name, type, placeholder, onChange, ...props
 }) {
   return (
-
     <div className="form-label-group">
-
-      <Field type={type} className="form-control" name={name} id={name} placeholder={placeholder} />
-
-      <label htmlFor={name}>
-        {placeholder}
-        {' '}
-      </label>
+      <Field
+        id={name}
+        className="form-control"
+        name={name}
+        type={type}
+        placeholder={placeholder}
+        onChange={onChange}
+        {...props}
+      />
 
       <ErrorMessage name={name} component={TextError} className="error-message" />
     </div>
@@ -30,6 +31,7 @@ Input.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
-
+  onChange: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
 };
 export default Input;
