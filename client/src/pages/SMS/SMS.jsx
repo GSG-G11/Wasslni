@@ -29,31 +29,36 @@ function SMS() {
     }
   };
   return (
-    <>
+    <div className="sms-container">
       <Logo />
+      <div className="big-container">
+        <div className="card-sms">
+          <Title>إنشاء حساب</Title>
 
-      <Title>إنشاء حساب</Title>
+          <Form
+            initialValues={{ phoneNumber: '' }}
+            validationSchema={smsValidation}
+            onSubmit={onSubmit}
+          >
 
-      <Form
-        initialValues={{ phoneNumber: '' }}
-        validationSchema={smsValidation}
-        onSubmit={onSubmit}
-      >
+            <Input
+              name="phoneNumber"
+              type="text"
+              placeholder="ادخل رقم هاتفك مبدوء ب 59"
+              className="sms-input"
+            />
 
-        <Input
-          name="phoneNumber"
-          type="text"
-          placeholder="ادخل رقم هاتفك مبدوء ب 59"
-        />
+            {errMessage && <TextError>{errMessage}</TextError>}
 
-        {errMessage && <TextError>{errMessage}</TextError>}
+            <SubmitButton title="تأكيد" />
+          </Form>
+          <Link to="/signin" className="mt-2">
+            هل لديك حساب بالفعل ؟
+          </Link>
+        </div>
 
-        <SubmitButton title="تأكيد" />
-      </Form>
-      <Link to="/signin" className="mt-2">
-        هل لديك حساب بالفعل ؟
-      </Link>
-    </>
+      </div>
+    </div>
 
   );
 }
