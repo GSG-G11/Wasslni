@@ -23,6 +23,12 @@ const staticData = [
     className: 'list-group-item list-group-item-action py-2 ripple mb-4 border-0 border-bottom border-dark',
     key: 4,
   },
+  {
+    name: ' تسجيل الخروج',
+    path: '/profile',
+    className: 'list-group-item list-group-item-action py-2 ripple mb-4 border-0 border-bottom border-dark',
+    key: 4,
+  },
 ];
 
 export default staticData;

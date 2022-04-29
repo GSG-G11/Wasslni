@@ -1,6 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { Formik } from 'formik';
+import { Formik, Form as FormikForm } from 'formik';
 import './Form.css';
 
 function Form({
@@ -8,23 +8,26 @@ function Form({
   validationSchema,
   onSubmit,
   children,
+  onChange,
 }) {
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={onSubmit}
+      onChange={onChange}
     >
-      {() => children }
+      <FormikForm>{children}</FormikForm>
     </Formik>
   );
 }
 
 Form.propTypes = {
-  initialValues: PropTypes.func.isRequired,
-  validationSchema: PropTypes.func.isRequired,
+  initialValues: PropTypes.object.isRequired,
+  validationSchema: PropTypes.node.isRequired,
   onSubmit: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
+  onChange: PropTypes.func,
 };
 
 export default Form;

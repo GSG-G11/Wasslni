@@ -1,3 +1,4 @@
 import Form from './Form';
+import SubmitButton from './submitButton';
 
-export default Form;
+export { Form, SubmitButton };
