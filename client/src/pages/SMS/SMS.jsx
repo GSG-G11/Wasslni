@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import {
@@ -7,18 +7,20 @@ import {
 } from '../../components';
 import { smsValidation } from '../../utils';
 import { SubmitButton } from '../../components/Form';
-
+import UserContext from '../../context/userContext';
 import './SMS.css';
 
 function SMS() {
   const [errMessage, setErrMessage] = useState('');
   const navigate = useNavigate();
+  const { user, setUser } = useContext(UserContext);
 
   const onSubmit = async (e) => {
     try {
       const response = await axios.post('/api/v1/auth/sms', {
         phoneNumber: `+970${e.phoneNumber}`,
       });
+      setUser({ ...user, phoneNumber: e.phoneNumber });
       navigate('/signup');
     } catch (err) {
       if (err.response.status === 400) {
