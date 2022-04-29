@@ -5,10 +5,12 @@ import './Form.css';
 
 function Form({
   initialValues,
+  // eslint-disable-next-line react/prop-types
   validationSchema,
   onSubmit,
   children,
   onChange,
+  onBlur,
 }) {
   return (
     <Formik
@@ -16,6 +18,7 @@ function Form({
       validationSchema={validationSchema}
       onSubmit={onSubmit}
       onChange={onChange}
+      onBlur={onBlur}
     >
       <FormikForm>{children}</FormikForm>
     </Formik>
@@ -24,10 +27,10 @@ function Form({
 
 Form.propTypes = {
   initialValues: PropTypes.object.isRequired,
-  validationSchema: PropTypes.node.isRequired,
   onSubmit: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
   onChange: PropTypes.func,
+  onBlur: PropTypes.func,
 };
 
 export default Form;

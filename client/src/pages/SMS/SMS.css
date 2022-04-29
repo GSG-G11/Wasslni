@@ -1,0 +1,9 @@
+.row > *{
+    max-height: 100vh;
+}
+.form-label-group input, .form-label-group label{
+    max-width: 300px;
+}
+.alert-danger {
+    width: 60%;
+}
