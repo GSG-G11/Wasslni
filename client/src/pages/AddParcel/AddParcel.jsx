@@ -2,6 +2,7 @@
 import React from 'react';
 import './AddParcel.css';
 import { Form, Input, SubmitButton } from '../../components';
+import { addParcelSchema } from '../../utils';
 
 function AddParcelPage() {
   const onSubmit = (e) => {
@@ -13,6 +14,7 @@ function AddParcelPage() {
       initialValues={{
         name: '', phoneNumber: '', price: '', image: '',
       }}
+      validationSchema={addParcelSchema}
     >
       <Input name="name" type="text" placeholder="ادخل اسم الطرد" />
       <Input name="phoneNumber" type="text" placeholder="ادخل رقم هاتف الزبون" />
