@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Home, SMS } from './pages';
+import { Home, Login, SMS } from './pages';
+import EditPassword from './pages/EditPassword/EditPassword';
 
 function App() {
   return (
@@ -8,7 +9,8 @@ function App() {
       {/* <Routes>
         <Route path="/" element={<Home />} />
       </Routes> */}
-      <SMS />
+      {/* <Login /> */}
+      <EditPassword />
     </>
 
   );
