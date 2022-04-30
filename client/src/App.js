@@ -1,17 +1,17 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Home, SMS } from './pages';
+import { Home, SMS, AddParcelPage } from './pages';
 
 function App() {
   return (
-    <>
-      {/* <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes> */}
-      <SMS />
-    </>
+    <AddParcelPage />
 
   );
 }
 
 export default App;
+
+//  {/* <Routes>
+//         <Route path="/" element={<Home />} />
+//       </Routes> */}
+//
