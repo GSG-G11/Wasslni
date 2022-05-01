@@ -7,8 +7,6 @@ const addParcelSchema = Yup.object().shape({
     .required(' هذه الخانة مطلوبة'),
   price: Yup.string()
     .required('Required'),
-  image: Yup.string()
-    .required('Required'),
 });
 
 export default addParcelSchema;
