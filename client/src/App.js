@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Home, SMS, AddParcelPage } from './pages';
+import { Home } from './pages';
 
 function App() {
   return (
