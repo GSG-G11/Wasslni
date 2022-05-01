@@ -4,14 +4,11 @@ import { Home, SMS, AddParcelPage } from './pages';
 
 function App() {
   return (
-    <AddParcelPage />
+    <Routes>
+      <Route path="/" element={<Home />} />
+    </Routes>
 
   );
 }
 
 export default App;
-
-//  {/* <Routes>
-//         <Route path="/" element={<Home />} />
-//       </Routes> */}
-//
