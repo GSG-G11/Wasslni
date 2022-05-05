@@ -1,5 +1,5 @@
 import Card from './Card/Card';
-import { Form, TextError } from './Form';
+import { Form, TextError, SubmitButton } from './Form';
 import Image from './UI/Image/Image';
 
 import {
@@ -7,5 +7,5 @@ import {
 } from './UI';
 
 export {
-  Title, Button, Logo, Card, Form, Input, TextError, Image,
+  Title, Button, Logo, Card, Form, Input, TextError, Image, SubmitButton,
 };
