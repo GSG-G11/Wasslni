@@ -1,12 +1,20 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Home, SMS, AddParcelPage } from './pages';
+import {
+  Home, SMS, Profile, Login,
+} from './pages';
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-    </Routes>
+    <>
+      {/* <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes> */}
+      {/* <SMS /> */}
+      <Profile />
+      {/* <Login /> */}
+    </>
+
   );
 }
 
