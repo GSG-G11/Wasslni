@@ -32,11 +32,10 @@ function UserProvider({ children }) {
         isLoggedIn: true,
         id: userInfo.id,
       });
-      if (location.pathname === '/login' || location.pathname === '/signup' || location.pathname === '/' || location.pathname === '/verify')navigate('/parcels');
     }
   }, []);
   return (
-    // eslint-disable-next-line react/jsx-no-constructed-context-values
+
     <UserContext.Provider value={{ user, setUser }}>
       {children}
     </UserContext.Provider>
