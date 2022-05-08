@@ -37,7 +37,7 @@ function AddParcelPage() {
   };
 
   return (
-    <>
+    <div className="add-parcel">
       <bootstarpButton className="btn btn-outline-primary" variant="primary" onClick={handleShow}>
         اضافة طرد
       </bootstarpButton>
@@ -65,7 +65,7 @@ function AddParcelPage() {
         </Modal.Body>
 
       </Modal>
-    </>
+    </div>
   );
 }
 export default AddParcelPage;
