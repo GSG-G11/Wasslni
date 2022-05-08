@@ -26,7 +26,7 @@ const login = async (req:Request, res:Response) => {
   return res
     .status(201)
     .cookie('token', token, {
-      httpOnly: true,
+      httpOnly: false,
     })
     .json({ message: 'login successfully' });
 };

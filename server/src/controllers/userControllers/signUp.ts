@@ -22,7 +22,7 @@ const signUp = async (req:Request, res:Response) => {
       id, role, phoneNumber, userName, lng, lat, urlImg,
     });
     return res.status(201).cookie('token', token, {
-      httpOnly: true,
+      httpOnly: false,
     })
       .json({ message: 'signup succeeded' });
   }
