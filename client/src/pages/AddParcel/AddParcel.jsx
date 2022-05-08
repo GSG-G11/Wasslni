@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Button as bootstarpButton, Modal } from 'react-bootstrap';
 import {
-  Form, Input, SubmitButton, TextError,
+  Form, Input, SubmitButton, TextError, Toasts,
 } from '../../components';
 import { addParcelSchema, getBase64Image } from '../../utils';
 

@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import decode from 'jwt-decode';
 
-import { useNavigate, useLocation } from 'react-router-dom';
 import UserContext from './userContext';
 import { getUserInfo } from '../utils';
 
 function UserProvider({ children }) {
-  const location = useLocation();
-  const navigate = useNavigate();
   const [user, setUser] = useState({
     username: '',
     phoneNumber: '',

@@ -5,7 +5,8 @@ import Toasts from './Toast/Toast';
 import {
   Title, Button, Logo, Input,
 } from './UI';
+import SideBar from './SideBar/SideBar';
 
 export {
-  Title, Button, Logo, Card, Form, Input, TextError, Image, SubmitButton, Toasts,
+  Title, Button, Logo, Card, Form, Input, TextError, Image, SubmitButton, Toasts, SideBar,
 };
