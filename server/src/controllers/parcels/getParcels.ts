@@ -8,6 +8,7 @@ const getParcels = async (req:Request, res:Response) => {
   if (!rowCount) {
     return res.status(404).json({ message: 'no parcels found' });
   }
-  return res.status(200).json({ message: 'parcels uploaded', data: rows[0] });
+
+  return res.status(200).json({ message: 'parcels uploaded', data: rows });
 };
 export default getParcels;
