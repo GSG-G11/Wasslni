@@ -6,7 +6,8 @@ import {
   Title, Button, Logo, Input,
 } from './UI';
 import SideBar from './SideBar/SideBar';
+import Map from './Map/Map';
 
 export {
-  Title, Button, Logo, Card, Form, Input, TextError, Image, SubmitButton, Toasts, SideBar,
+  Title, Button, Logo, Card, Form, Input, TextError, Image, SubmitButton, Toasts, SideBar, Map,
 };
