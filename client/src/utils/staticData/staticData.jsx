@@ -2,7 +2,7 @@ const staticData = [
   {
     name: 'طرودي',
     path: '/parcels',
-    className: 'list-group-item list-group-item-action py-2 ripple mb-4 border-0 border-bottom border-dark active',
+    className: 'list-group-item list-group-item-action py-2 ripple mb-4 border-0 border-bottom border-dark',
     key: 1,
   },
   {
@@ -13,19 +13,19 @@ const staticData = [
   },
   {
     name: 'تعديل الملف الشخصي',
-    path: '/profile',
+    path: '/editProfile',
     className: 'list-group-item list-group-item-action py-2 ripple mb-4 border-0 border-bottom border-dark',
     key: 3,
   },
   {
     name: ' تعديل كلمة المرور',
-    path: '/profile',
+    path: '/editpassword',
     className: 'list-group-item list-group-item-action py-2 ripple mb-4 border-0 border-bottom border-dark',
     key: 4,
   },
   {
     name: ' تسجيل الخروج',
-    path: '/profile',
+    path: '/logout',
     className: 'list-group-item list-group-item-action py-2 ripple mb-4 border-0 border-bottom border-dark',
     key: 4,
   },

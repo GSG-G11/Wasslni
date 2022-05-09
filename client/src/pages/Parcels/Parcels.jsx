@@ -1,8 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+// eslint-disable-next-line import/no-cycle
+import { AddParcelPage } from '..';
 import {
-  Card, TextError, Title, Loader,
+  Card, Loader, TextError, Title,
 } from '../../components';
+import './Parcels.css';
 
 function Parcels() {
   const [parcels, setParcels] = useState([]);
@@ -14,19 +17,24 @@ function Parcels() {
         const response = await axios.get('/api/v1/parcels');
         setParcels(response.data.data);
         setLoading(false);
+        setError(null);
       } catch (err) {
-        setError(err.response.data.error);
+        setLoading(false);
+        setError('لا يوجد طرود حاليا');
       }
     };
     fetchData();
   }, []);
   return (
-    <div>
-      <Title>طرودي</Title>
+    <div className="pages-container ">
+      <div className="parcels-header">
+        <AddParcelPage />
+        <Title>طرودي</Title>
+      </div>
       {loading ? <Loader /> : (
-        <div className="container-fluid">
+        <div className="mt-4  cards-container">
           {parcels.map((parcel) => (<Card name={parcel.name} key={parcel.id} />))}
-          {error && <TextError title={error} />}
+          <div>{error}</div>
         </div>
       )}
     </div>

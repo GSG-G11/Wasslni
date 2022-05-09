@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Offcanvas, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import staticData from '../../utils/staticData/staticData';
+import './SideBar.css';
 
 function SideBar() {
   const [show, setShow] = useState(false);
@@ -24,7 +25,8 @@ function SideBar() {
 
   return (
     <>
-      <Button onClick={handleShow} className="burger-menu btn-light m-3">
+
+      <Button onClick={handleShow} className="btn-light" style={{ padding: '0px', width: 'auto' }}>
         <i className="fas fa-bars" />
       </Button>
       <Offcanvas show={!mobile ? true : show} onHide={handleClose} placement="end" scroll backdrop={mobile} style={{ maxWidth: '280px' }}>
@@ -35,18 +37,20 @@ function SideBar() {
         <Offcanvas.Body>
           <ul>
             {staticData.map((link) => (
-              <Link
+              <NavLink
                 onClick={() => (mobile ? handleClose() : null)}
                 to={link.path}
                 className={link.className}
                 aria-current="true"
               >
                 {link.name}
-              </Link>
+              </NavLink>
             ))}
           </ul>
         </Offcanvas.Body>
       </Offcanvas>
+      <Outlet />
+
     </>
   );
 }

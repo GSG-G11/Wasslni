@@ -18,9 +18,11 @@ const signUp = async (req:Request, res:Response) => {
     });
     const { id } = rows[0];
     const role = rows[0].isseller;
-    const token = await createToken({ id, role });
+    const token = await createToken({
+      id, role, phoneNumber, userName, lng, lat, urlImg,
+    });
     return res.status(201).cookie('token', token, {
-      httpOnly: true,
+      httpOnly: false,
     })
       .json({ message: 'signup succeeded' });
   }
