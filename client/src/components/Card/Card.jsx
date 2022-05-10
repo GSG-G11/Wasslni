@@ -2,7 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 import './Card.css';
-// card col-xl-4 col-md-10 m-2 shadow-sm
+
 function Card({
   name, status, id, children, className,
 }) {
