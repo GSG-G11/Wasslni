@@ -13,20 +13,30 @@ function AddParcelPage() {
   const [image, setImage] = useState('');
   const [show, setShow] = useState(false);
   const [errMessage, setErrMessage] = useState('');
+  const [ImgErr, setImgErr] = useState('');
+  const [isToast, setToast] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const onChangeImage = async (e) => {
-    const file = await getBase64Image(e.target.files[0]);
-    setImage(file);
+    try {
+      const file = await getBase64Image(e.target.files[0]);
+      setImage(file);
+      setImgErr('');
+    } catch (error) {
+      setImgErr(error.message);
+    }
   };
   const onSubmit = async ({ name, phoneNumber, price }) => {
     try {
+      setErrMessage('');
       const response = await axios.post('/api/v1/parcels/', {
         name,
         phoneNumber: `+970${phoneNumber}`,
         price,
         image,
       });
+      setToast(!isToast);
+      setShow(!show);
     } catch (error) {
       if (error.response.status === 400) {
         setErrMessage(' لا يوجد زبون بهذا الرقم   ');
@@ -38,6 +48,7 @@ function AddParcelPage() {
 
   return (
     <div className="add-parcel">
+      {isToast && <Toasts title="تم  بنجاح" body="تم اضافة الطرد بنجاح" color="#30d94d" />}
       <bootstarpButton className="btn btn-outline-primary" variant="primary" onClick={handleShow}>
         اضافة طرد
       </bootstarpButton>
@@ -59,8 +70,9 @@ function AddParcelPage() {
             <Input name="price" type="text" placeholder="ادخل سعر الطرد" />
             <label htmlFor="customFile" style={{ marginBottom: '5px' }}>اختر صورة الطرد</label>
             <input name="image" type="file" className="form-control" id="customFile" onChange={onChangeImage} />
-            {errMessage && <TextError>{errMessage}</TextError>}
+            {ImgErr && <TextError>{ImgErr}</TextError>}
             <div className="d-flex justify-content-end "><SubmitButton title="تأكيد" /></div>
+            {errMessage && <TextError>{errMessage}</TextError>}
           </Form>
         </Modal.Body>
 

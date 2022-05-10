@@ -1,6 +1,43 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { AddParcelPage } from '..';
+import {
+  Card, Loader, Title,
+} from '../../components';
+import './Parcels.css';
 
 function Parcels() {
-  return 'Parcels';
+  const [loading, setLoading] = useState(true);
+  const [parcels, setParcels] = useState([]);
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('/api/v1/parcels');
+        setParcels(response.data.data);
+        setLoading(false);
+        setError(null);
+      } catch (err) {
+        setLoading(false);
+        setError('لا يوجد طرود حاليا');
+      }
+    };
+    fetchData();
+  }, []);
+  return (
+    <div className="pages-container ">
+      <div className="parcels-header">
+        <AddParcelPage />
+        <Title>طرودي</Title>
+      </div>
+      {loading ? <Loader /> : (
+        <div className="mt-4  cards-container">
+          {parcels.map((parcel) => (<Card name={parcel.name} key={parcel.id} id={parcel.id} />))}
+          <div>{error}</div>
+        </div>
+      )}
+    </div>
+  );
 }
+
 export default Parcels;
