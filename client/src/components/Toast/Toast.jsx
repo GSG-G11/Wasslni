@@ -4,6 +4,7 @@ import {
   Row, Col, Button, Toast,
 } from 'react-bootstrap';
 import './Toast.css';
+import ToastContainer from 'react-bootstrap/ToastContainer';
 
 function Toasts({ title, body, color }) {
   const [showA, setShowA] = useState(true);
@@ -12,8 +13,8 @@ function Toasts({ title, body, color }) {
 
   return (
     <Row>
-      <Col md={6} className="mb-2">
-        <Toast show={showA} onClose={toggleShowA} className="m-2">
+      <ToastContainer md={6} className="mb-2" position="top-center">
+        <Toast show={showA} onClose={toggleShowA} className="m-2 ">
           <Toast.Header>
             <img
               src="holder.js/20x20?text=%20"
@@ -24,7 +25,7 @@ function Toasts({ title, body, color }) {
           </Toast.Header>
           <Toast.Body>{body}</Toast.Body>
         </Toast>
-      </Col>
+      </ToastContainer>
     </Row>
   );
 }
