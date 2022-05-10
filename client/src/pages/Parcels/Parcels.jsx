@@ -1,9 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { AddParcelPage } from '..';
+
 import {
   Card, Loader, Title,
 } from '../../components';
+import AddParcelPage from '../AddParcel/AddParcel';
 import './Parcels.css';
 
 function Parcels() {
@@ -32,7 +33,7 @@ function Parcels() {
       </div>
       {loading ? <Loader /> : (
         <div className="mt-4  cards-container">
-          {parcels.map((parcel) => (<Card name={parcel.name} key={parcel.id} id={parcel.id} />))}
+          {parcels.map((parcel) => (<Card className="card col-xl-4 col-md-10 m-2 shadow-sm" name={parcel.name} key={parcel.id} id={parcel.id} />))}
           <div>{error}</div>
         </div>
       )}

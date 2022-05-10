@@ -2,12 +2,12 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 import './Card.css';
-
+// card col-xl-4 col-md-10 m-2 shadow-sm
 function Card({
-  name, status, id, children,
+  name, status, id, children, className,
 }) {
   return (
-    <div className="card col-xl-4 col-md-10 m-2 shadow-sm" style={{ borderRight: '5px solid #ca011a' }}>
+    <div className={className} style={{ borderRight: '5px solid #ca011a' }}>
       {
       name
         ? (
@@ -27,4 +27,5 @@ Card.propTypes = {
   status: PropTypes.bool.isRequired,
   id: PropTypes.number.isRequired,
   children: PropTypes.node.isRequired,
+  className: PropTypes.string.isRequired,
 };

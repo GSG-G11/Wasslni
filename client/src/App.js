@@ -32,14 +32,14 @@ function App() {
           path="/"
           element={(
             <div>
+              {' '}
               <SideBar />
               {' '}
             </div>
           )}
         >
-          <Route path="/parcels" element={<Parcels />}>
-            <Route path="/parcels/:id" element={<ParcelDetails />} />
-          </Route>
+          <Route path="/parcels" element={<Parcels />} />
+          <Route path="/parcels/:id" element={<ParcelDetails />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/editPassword" element={<EditPassword />} />
           <Route path="/editProfile" element={<EditProfile />} />

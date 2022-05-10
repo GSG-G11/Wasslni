@@ -33,6 +33,7 @@ const addParcel = async (req:Request, res:Response) => {
   const { routes } = data;
   const { distance, duration: durationMINS, geometry: { coordinates } } = routes[0];
   const distanceKM = distance / 1000;
+  console.log(distanceKM);
   const deliveryPrice = Math.floor(distanceKM * 1.3) < 5 ? 5 : Math.floor(distanceKM * 1.3);
   const { rows } = await addParcelQuery(({
     name, deliveryPrice, price, urlImg, buyerId, sellerId,
