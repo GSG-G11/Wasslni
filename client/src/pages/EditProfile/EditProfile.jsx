@@ -89,6 +89,7 @@ function EditProfile() {
       try {
         const response = await axios.put('/api/v1/profile/password', values);
         const logoutResponse = await axios.delete('/api/v1/auth/logout');
+        setUser({});
         navigate('/login');
       } catch (err) {
         if (err.response.status === 400) {
