@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 import AddParcelPage from './AddParcel/AddParcel';
 import EditPassword from './EditPassword/EditPassword';
 import EditProfile from './EditProfile/EditProfile';
