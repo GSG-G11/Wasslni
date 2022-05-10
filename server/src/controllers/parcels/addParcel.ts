@@ -13,7 +13,7 @@ const addParcel = async (req:Request, res:Response) => {
   const { rows: sellerData } = await getUserById(sellerId);
   const { lng: sellerLng, lat: sellerLat } = sellerData[0];
   const {
-    name, deliveryPrice, price, status, phoneNumber, image,
+    name, price, phoneNumber, image,
   } = req.body;
   await addParcelSchema.validateAsync(req.body);
   const { rowCount, rows: buyerData } = await checkPhoneNumber(phoneNumber);
@@ -31,10 +31,11 @@ const addParcel = async (req:Request, res:Response) => {
   );
   const data = await response.json();
   const { routes } = data;
-  const { distance: distanceKM, duration: durationMINS, geometry: { coordinates } } = routes[0];
-
+  const { distance, duration: durationMINS, geometry: { coordinates } } = routes[0];
+  const distanceKM = distance / 1000;
+  const deliveryPrice = Math.floor(distanceKM * 1.3) < 5 ? 5 : Math.floor(distanceKM * 1.3);
   const { rows } = await addParcelQuery(({
-    name, deliveryPrice, price, status, urlImg, buyerId, sellerId,
+    name, deliveryPrice, price, urlImg, buyerId, sellerId,
   }));
   const { id: parcelId } = rows[0];
   await addRouteQuery({

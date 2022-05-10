@@ -25,6 +25,7 @@
     "react/require-default-props": 0,
     "react/forbid-prop-types": 0,
     "import/prefer-default-export": 0,
+    "eslint-disable-next-line import":0,
     "jsx-a11y/label-has-associated-control": ["error", {
       "required": {
         "some": ["nesting", "id"]

@@ -1,5 +1,13 @@
-.add-parcel .btn-close{
+.modal-header .btn-close{
     position: absolute;
     left: 10px;
     font-size: 20px;
+}
+.add-parcel{
+    margin-left: 30px;
+}
+@media screen and (max-width: 500px) {
+    .add-parcel{
+        margin-left: 15px;
+    }
 }
