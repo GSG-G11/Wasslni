@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
 import { editProfileQuery, getUserById } from '../../database/queries';
-import { cloudinaryImg, comparePassword, editProfileInfoSchema } from '../../utils';
+import {
+  cloudinaryImg, comparePassword, createToken, editProfileInfoSchema,
+} from '../../utils';
 
 const editProfile = async (req: Request, res: Response) => {
   const { userId: id }:any = req;
@@ -13,7 +15,7 @@ const editProfile = async (req: Request, res: Response) => {
     return res.status(400).json({ message: 'user not found' });
   }
 
-  const hashedPassword = rows[0].password;
+  const { password: hashedPassword, isseller: role } = rows[0];
   const isMatch: Boolean = await comparePassword(password, hashedPassword);
   if (!isMatch) {
     return res.status(400).json({ message: 'password wrong' });
@@ -23,8 +25,12 @@ const editProfile = async (req: Request, res: Response) => {
   await editProfileQuery({
     id, userName, urlImg, lat, lng, phoneNumber,
   });
-
-  return res.status(200).json({ message: 'edit profile successfully' });
+  const token = await createToken({
+    id, role, phoneNumber, userName, lng, lat, urlImg,
+  });
+  return res.status(201).cookie('token', token, {
+    httpOnly: false,
+  }).json({ message: 'edit profile successfully' });
 };
 
 export default editProfile;

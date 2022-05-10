@@ -7,7 +7,6 @@ function Profile() {
   useEffect(() => {
     const fetchUser = async () => {
       const response = await axios.get('/api/v1/profile');
-      console.log(response.data.data[0]);
       setUser(response.data.data[0]);
     };
     fetchUser();
@@ -24,17 +23,14 @@ function Profile() {
         <div className="userInfo-left">
           <p>
             الإسم :
-            {' '}
             {user.name ? 'منذر' : null}
           </p>
           <p>
             الصلاحيات :
             {user.isSeller ? ' تاجر ' : 'بائع'}
-            {' '}
           </p>
           <p>
             رقم الجوال :
-            {' '}
             {user.phoneNumber}
           </p>
         </div>

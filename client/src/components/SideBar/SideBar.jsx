@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Offcanvas, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import staticData from '../../utils/staticData/staticData';
 
 function SideBar() {
@@ -35,18 +35,19 @@ function SideBar() {
         <Offcanvas.Body>
           <ul>
             {staticData.map((link) => (
-              <Link
+              <NavLink
                 onClick={() => (mobile ? handleClose() : null)}
                 to={link.path}
                 className={link.className}
                 aria-current="true"
               >
                 {link.name}
-              </Link>
+              </NavLink>
             ))}
           </ul>
         </Offcanvas.Body>
       </Offcanvas>
+      <Outlet />
     </>
   );
 }

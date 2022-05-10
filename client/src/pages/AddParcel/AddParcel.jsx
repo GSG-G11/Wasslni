@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Button as bootstarpButton, Modal } from 'react-bootstrap';
 import {
-  Form, Input, SubmitButton, TextError,
+  Form, Input, SubmitButton, TextError, Toasts,
 } from '../../components';
 import { addParcelSchema, getBase64Image } from '../../utils';
 
@@ -37,7 +37,7 @@ function AddParcelPage() {
   };
 
   return (
-    <>
+    <div className="add-parcel">
       <bootstarpButton className="btn btn-outline-primary" variant="primary" onClick={handleShow}>
         اضافة طرد
       </bootstarpButton>
@@ -65,7 +65,7 @@ function AddParcelPage() {
         </Modal.Body>
 
       </Modal>
-    </>
+    </div>
   );
 }
 export default AddParcelPage;
