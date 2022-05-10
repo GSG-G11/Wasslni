@@ -13,7 +13,7 @@ function ParcelDetails() {
   const [data, setData] = useState([]);
   const [route, setRoute] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [isToast, setToast] = useState(false);
+  const [isToast, setIsToast] = useState(false);
   const [message, setMessage] = useState('');
   const { id } = useParams();
   const getDetails = async () => {
@@ -33,7 +33,7 @@ function ParcelDetails() {
     try {
       const response = await axios.put(`/api/v1/parcels/status/${id}`);
       setData({ ...data, status: true });
-      setToast(!isToast);
+      setIsToast(!isToast);
     } catch (error) {
       setMessage(error);
     }
