@@ -3,10 +3,12 @@ import './EditProfile.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import {
-  Title, Form, Input, TextError, Logo,
+  Title, Form, Input, TextError, Toasts,
 } from '../../components';
 import { SubmitButton } from '../../components/Form';
-import { editPasswordValidation, editProfileValidaiton, getBase64Image } from '../../utils';
+import {
+  editPasswordValidation, editProfileValidaiton, getBase64Image, getUserInfo,
+} from '../../utils';
 
 import UserContext from '../../context/userContext';
 import Map from '../../components/Map/Map';
@@ -27,6 +29,7 @@ function EditProfile() {
   const [img, setImg] = useState(undefined);
   const [oldLat, setOldLat] = useState(lat);
   const [oldLng, setOldLng] = useState(lng);
+  const [isToast, setToast] = useState(false);
 
   const onChangeImage = async (e) => {
     try {
@@ -40,6 +43,10 @@ function EditProfile() {
   };
 
   const handleSubmitInfo = async (values) => {
+    if (imgErr) {
+      setErrMessage(' الرجاء اختيار صورة');
+      return;
+    }
     if (oldLat === lat
       && oldLng === lng
       && !img
@@ -48,16 +55,27 @@ function EditProfile() {
       setErrMessage('لا يوجد تغييرات');
       return;
     }
-    if (imgErr) {
-      setErrMessage(' الرجاء اختيار صورة');
-      return;
-    }
 
     try {
       const response = await axios.put('/api/v1/profile', {
         userName: values.username, phoneNumber: `+970${values.phoneNumber}`, img, lat, lng,
       });
+      const userInfo = getUserInfo();
+      setUser({
+        username: userInfo.userName,
+        phoneNumber: userInfo.phoneNumber,
+        image: userInfo.urlImg,
+        lat: userInfo.lat,
+        lng: userInfo.lng,
+        isSeller: userInfo.role,
+        isLoggedIn: true,
+        id: userInfo.id,
+      });
+      setToast(true);
       setErrMessage('');
+      setTimeout(() => {
+        setToast(false);
+      }, 2000);
     } catch (err) {
       setErrMessage(err.response.data.message);
     }
@@ -79,6 +97,7 @@ function EditProfile() {
   };
   return (
     <div className="pages-container">
+      { isToast && <Toasts title="تم بنجاح" body="تم تعديل بياناتك بنجاح" color="#30d94d" />}
       <Title>تعديل الملف الشخصي</Title>
       <div className=" mt-5">
         <div className="h3 mb-4">تعديل معلومات التواصل</div>
