@@ -4,7 +4,7 @@ import axios from 'axios';
 import {
   Form, Input, Logo, TextError, Title,
 } from '../../components';
-import { loginValidation } from '../../utils';
+import { getUserInfo, loginValidation } from '../../utils';
 import { SubmitButton } from '../../components/Form';
 import UserContext from '../../context/userContext';
 
@@ -18,7 +18,17 @@ function Login() {
       await axios.post('/api/v1/auth/login', {
         phoneNumber: `+970${e.phoneNumber}`, password: e.password,
       });
-      setUser({ ...user, phoneNumber: e.phoneNumber, isLoggedIn: true });
+      const userInfo = getUserInfo();
+      setUser({
+        username: userInfo.userName,
+        phoneNumber: userInfo.phoneNumber,
+        image: userInfo.urlImg,
+        lat: userInfo.lat,
+        lng: userInfo.lng,
+        isSeller: userInfo.role,
+        isLoggedIn: true,
+        id: userInfo.id,
+      });
       navigate('/parcels');
     } catch (err) {
       if (err.response.status === 400) {
