@@ -77,7 +77,9 @@ function EditProfile() {
         setToast(false);
       }, 2000);
     } catch (err) {
-      setErrMessage(err.response.data.message);
+      if (err.response.status === 400) {
+        setErrMessage('رقم الهاتف موجود بالفعل');
+      }
     }
   };
   const handleSumbitPassword = async (values) => {
