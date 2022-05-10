@@ -3,13 +3,13 @@ import React, { useEffect, useState } from 'react';
 // eslint-disable-next-line import/no-cycle
 import { AddParcelPage } from '..';
 import {
-  Card, Loader, TextError, Title,
+  Card, Loader, Title,
 } from '../../components';
 import './Parcels.css';
 
 function Parcels() {
-  const [parcels, setParcels] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [parcels, setParcels] = useState([]);
   const [error, setError] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
@@ -33,7 +33,7 @@ function Parcels() {
       </div>
       {loading ? <Loader /> : (
         <div className="mt-4  cards-container">
-          {parcels.map((parcel) => (<Card name={parcel.name} key={parcel.id} />))}
+          {parcels.map((parcel) => (<Card name={parcel.name} key={parcel.id} id={parcel.id} />))}
           <div>{error}</div>
         </div>
       )}

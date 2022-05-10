@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import AddParcelPage from './AddParcel/AddParcel';
 import EditPassword from './EditPassword/EditPassword';
 import EditProfile from './EditProfile/EditProfile';
@@ -10,6 +11,6 @@ import Signup from './Signup/Signup';
 import SMS from './SMS/SMS';
 
 export {
-  Home, SMS, Login, Signup, Parcels, ParcelDetails, Profile, EditPassword, EditProfile,
-  AddParcelPage,
+  Home, SMS, Login, Signup, ParcelDetails, Profile, EditPassword, EditProfile,
+  AddParcelPage, Parcels,
 };
