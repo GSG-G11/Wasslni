@@ -41,6 +41,6 @@ const addParcel = async (req:Request, res:Response) => {
   await addRouteQuery({
     distanceKM, durationMINS, coordinates, parcelId,
   });
-  res.status(201).json({ message: 'The parcel has been added successfully ' });
+  res.status(201).json({ message: 'The parcel has been added successfully ', data: rows[0] });
 };
 export default addParcel;
