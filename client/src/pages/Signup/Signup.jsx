@@ -126,10 +126,10 @@ function Signup() {
             </div>
             <Map setPosition />
           </div>
-          {errMessage && <TextError>{errMessage}</TextError>}
 
         </div>
         <SubmitButton title="تأكيد" className="button" />
+        {errMessage && <TextError>{errMessage}</TextError>}
       </Form>
 
     </div>
