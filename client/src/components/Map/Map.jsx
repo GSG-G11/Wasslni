@@ -11,7 +11,6 @@ function Map(props) {
   const { setPosition, data } = props;
   const { user, setUser } = useContext(UserContext);
   const { lat, lng } = user;
-
   const mapContainer = useRef(null);
   const map = useRef(null);
   mapboxgl.accessToken = 'pk.eyJ1IjoiZmFkeWFsd2F6aXIiLCJhIjoiY2wyM2Q5d25pMDV2OTNjbzBtdDVrcWJ4ZyJ9.eVB-xAdq0rCO-IVUC8GcNg';

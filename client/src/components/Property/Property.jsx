@@ -9,7 +9,7 @@ function Property({ keyWord, value }) {
         {keyWord}
         :
       </span>
-      <span>{value}</span>
+      <span style={{ marginRight: '3px' }}>{value}</span>
     </div>
   );
 }
