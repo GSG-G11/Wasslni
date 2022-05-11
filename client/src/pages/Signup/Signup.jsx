@@ -6,7 +6,7 @@ import {
 } from '../../components';
 import { SubmitButton } from '../../components/Form';
 import Select from '../../components/UI/Select/Select';
-import { signupValidation, getBase64Image } from '../../utils';
+import { signupValidation, getBase64Image, getUserInfo } from '../../utils';
 import UserContext from '../../context/userContext';
 import './Signup.css';
 
@@ -15,16 +15,16 @@ function Signup() {
 
   const [img, setImage] = useState('');
   const [errMessage, setErrMessage] = useState('');
-  const [imgError, setimgError] = useState('');
+  const [imgError, setImgError] = useState('');
   const navigate = useNavigate();
 
   const onChangeImage = async (e) => {
     try {
       const file = await getBase64Image(e.target.files[0]);
-      setimgError('');
+      setImgError('');
       setImage(file);
     } catch (error) {
-      setimgError(error.message);
+      setImgError(error.message);
     }
   };
 
@@ -32,10 +32,6 @@ function Signup() {
     code, phoneNumber, userName, password, isSeller,
   }) => {
     try {
-      // if (phoneNumber !== user.phoneNumber) {
-      //   setErrMessage('الرجاء ادخال الرقم بشكل صحيح');
-      //   return;
-      // }
       if (!img) {
         setErrMessage('الرجاء اختيار صورة');
         return;
@@ -59,8 +55,14 @@ function Signup() {
         lat: user.lat,
         lng: user.lng,
       });
+      const userInfo = getUserInfo();
       setUser({
-        ...user, userName, img, isSeller, isLoggedIn: true,
+        userName: userInfo.userName,
+        img: userInfo.urlImg,
+        isSeller: userInfo.role,
+        lat: userInfo.lat,
+        lng: userInfo.lng,
+        isLoggedIn: true,
       });
       navigate('/parcles');
     } catch (error) {
@@ -73,23 +75,26 @@ function Signup() {
   return (
     <div className="signUp-container">
       <Logo />
-      <div className="">
-        <div className="">
-          <Title>إنشاء حساب</Title>
+      <div className="signup-title">
+        <Title>إنشاء حساب</Title>
+      </div>
 
-          <Form
-            initialValues={{
-              code: '', phoneNumber: user.phoneNumber, userName: '', password: '', isSeller: 'true',
-            }}
-            validationSchema={signupValidation}
-            onSubmit={onSubmit}
-          >
+      <Form
+        className="Form"
+        initialValues={{
+          code: '', phoneNumber: user.phoneNumber, userName: '', password: '', isSeller: 'true',
+        }}
+        validationSchema={signupValidation}
+        onSubmit={onSubmit}
+      >
+        <div className="signUp-body">
+
+          <div className="input-filed">
 
             <Input
               name="code"
               type="text"
               placeholder="أدخل رمز التأكيد"
-
             />
             <Input
               name="phoneNumber"
@@ -110,18 +115,23 @@ function Signup() {
               name="isSeller"
             />
 
-            <label htmlFor="customFile" style={{ marginBottom: '5px' }}>اختر صورة الطرد</label>
-            <input name="image" type="file" className="form-control" id="customFile" onChange={onChangeImage} />
+            <label htmlFor="customFile" style={{ marginTop: '20px' }}>اختر صورة الطرد</label>
+            <input name="image" type="file" className="form-control" id="customFile" onChange={onChangeImage} style={{ marginBottom: '20px' }} />
             {imgError && <TextError>{imgError}</TextError>}
-            <Map setPosition className="map" />
-            <SubmitButton title="تأكيد" />
-            {errMessage && <TextError>{errMessage}</TextError>}
+          </div>
 
-          </Form>
+          <div className="map-div">
+            <div className="h4">
+              قم بتحديد موقعك
+            </div>
+            <Map setPosition />
+          </div>
+          {errMessage && <TextError>{errMessage}</TextError>}
 
         </div>
+        <SubmitButton title="تأكيد" className="button" />
+      </Form>
 
-      </div>
     </div>
 
   );
