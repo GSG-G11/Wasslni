@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { AddParcelPage } from '..';
+import AddParcelPage from '../AddParcel/AddParcel';
 import {
   Card, Loader, Title,
 } from '../../components';

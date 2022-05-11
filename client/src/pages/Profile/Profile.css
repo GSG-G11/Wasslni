@@ -1,13 +1,82 @@
 .header{
     background-color: #EBBA3D;
-    width: 100%;
-    height: 130px;
+    width: 100,2%;
+    height: 120px;
     padding: 20px;
+    margin-top: -40px;
+    margin-right: -10px;
+    margin-bottom: 30px;
+    position: relative;
 }
 .userInfo{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 400px;
-    margin-right: 100px;
+    width: 40%;
+}
+.userInfo-right{
+    width: 130px;
+    height: 130px;
+    position: absolute;
+    top: 40px;
+    right: 320px;
+}
+.userInfo-left{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 50px;
+}
+.userInfo-right img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.map{
+    width: 60%;
+    height: 400px;
+    margin-bottom: 50px;
+}
+
+@media screen and (max-width: 600px) {
+    .header{
+        margin: 0;
+        width: 100,2%;
+        height: 80px;
+        margin-right: -10px;
+    }
+    .userInfo{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+    }
+    .userInfo-right{
+        width: 80px;
+        height: 80px;
+        position: absolute;
+        top: 100px;
+        right: 30px;
+    }
+    .map{
+        width: 90%;
+    }
+}
+@media (min-width:600px) and (max-width:768px) {
+    .header{
+        margin: 0;
+        width: 100,5%;
+        margin-right: -10px;
+    }
+    .userInfo-right{
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 130px;
+        right: 30px;
+    }
+
 }

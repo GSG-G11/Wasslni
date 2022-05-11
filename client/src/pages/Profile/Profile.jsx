@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Profile.css';
+import Map from '../../components/Map/Map';
 
 function Profile() {
   const [user, setUser] = useState({});
@@ -12,10 +13,8 @@ function Profile() {
     fetchUser();
   }, []);
   return (
-    <div className="container-fluid">
-      <div className="header">
-        <h1 className="text-primary">الملف الشخصي</h1>
-      </div>
+    <div className="pages-container">
+      <div className="header" />
       <div className="userInfo">
         <div className="userInfo-right">
           <img src={user.image} alt="profile" />
@@ -23,7 +22,7 @@ function Profile() {
         <div className="userInfo-left">
           <p>
             الإسم :
-            {user.name ? 'منذر' : null}
+            {user.name}
           </p>
           <p>
             الصلاحيات :
@@ -34,6 +33,10 @@ function Profile() {
             {user.phoneNumber}
           </p>
         </div>
+      </div>
+      <h4 className="text-primary m-4">موقعي</h4>
+      <div className="map">
+        <Map />
       </div>
     </div>
   );
