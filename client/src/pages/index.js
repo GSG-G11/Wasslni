@@ -9,5 +9,6 @@ import Signup from './Signup/Signup';
 import SMS from './SMS/SMS';
 
 export {
-  Home, SMS, Login, Signup, Parcels, ParcelDetails, Profile, EditPassword, EditProfile,
+  Home, SMS, Login, Signup, ParcelDetails, Profile, EditPassword, EditProfile,
+  Parcels,
 };
