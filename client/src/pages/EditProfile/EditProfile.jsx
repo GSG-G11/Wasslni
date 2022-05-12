@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import './EditProfile.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+
 import {
   Title, Form, Input, TextError, Toasts,
 } from '../../components';
@@ -9,9 +10,9 @@ import { SubmitButton } from '../../components/Form';
 import {
   editPasswordValidation, editProfileValidaiton, getBase64Image, getUserInfo,
 } from '../../utils';
-
 import UserContext from '../../context/userContext';
 import Map from '../../components/Map/Map';
+import http from '../../services/http';
 
 function EditProfile() {
   const { user, setUser } = useContext(UserContext);
@@ -57,7 +58,7 @@ function EditProfile() {
     }
 
     try {
-      const response = await axios.put('/api/v1/profile', {
+      const response = await http.put('/api/v1/profile', {
         userName: values.username, phoneNumber: `+970${values.phoneNumber}`, img, lat, lng,
       });
       const userInfo = getUserInfo();
@@ -100,6 +101,7 @@ function EditProfile() {
   };
   return (
     <div className="pages-container">
+
       { isToast && <Toasts title="تم بنجاح" body="تم تعديل بياناتك بنجاح" color="#30d94d" />}
       <Title>تعديل الملف الشخصي</Title>
       <div className=" mt-5">
