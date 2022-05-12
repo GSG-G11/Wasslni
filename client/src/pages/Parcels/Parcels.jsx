@@ -27,13 +27,11 @@ function Parcels() {
     };
     fetchData();
   }, []);
-  const addParcel = (parcel) => {
-    setParcels([...parcels, parcel]);
-  };
+
   return (
     <div className="pages-container ">
       <div className={user.isSeller ? 'parcels-header' : null}>
-        {user.isSeller && <AddParcelPage addParcel={addParcel} />}
+        {user.isSeller && <AddParcelPage parcels={parcels} setParcels={setParcels} />}
         <Title>طرودي</Title>
       </div>
       {loading ? <Loader /> : (

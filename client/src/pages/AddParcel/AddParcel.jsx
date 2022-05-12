@@ -9,7 +9,7 @@ import {
 } from '../../components';
 import { addParcelSchema, getBase64Image } from '../../utils';
 
-function AddParcelPage({ addParcel }) {
+function AddParcelPage({ parcels, setParcels }) {
   const navigate = useNavigate();
   const [image, setImage] = useState('');
   const [show, setShow] = useState(false);
@@ -38,7 +38,7 @@ function AddParcelPage({ addParcel }) {
       });
       const { id, status, name: parcelName } = response.data.data;
 
-      addParcel({ id, status, name: parcelName });
+      setParcels([...parcels, { id, status, name: parcelName }]);
       setToast(!isToast);
       setShow(!show);
     } catch (error) {
@@ -85,6 +85,7 @@ function AddParcelPage({ addParcel }) {
   );
 }
 AddParcelPage.propTypes = {
-  addParcel: PropTypes.func.isRequired,
+  parcels: PropTypes.array.isRequired,
+  setParcels: PropTypes.func.isRequired,
 };
 export default AddParcelPage;
