@@ -30,7 +30,7 @@ function EditProfile() {
   const [img, setImg] = useState(undefined);
   const [oldLat, setOldLat] = useState(lat);
   const [oldLng, setOldLng] = useState(lng);
-  const [isToast, setToast] = useState(false);
+  const [toast, setToast] = useState(false);
 
   const onChangeImage = async (e) => {
     try {
@@ -61,22 +61,25 @@ function EditProfile() {
       const response = await http.put('/api/v1/profile', {
         userName: values.username, phoneNumber: `+970${values.phoneNumber}`, img, lat, lng,
       });
-      const userInfo = getUserInfo();
-      setUser({
-        username: userInfo.userName,
-        phoneNumber: userInfo.phoneNumber,
-        image: userInfo.urlImg,
-        lat: userInfo.lat,
-        lng: userInfo.lng,
-        isSeller: userInfo.role,
-        isLoggedIn: true,
-        id: userInfo.id,
-      });
-      setToast(true);
-      setErrMessage('');
-      setTimeout(() => {
-        setToast(false);
-      }, 2000);
+
+      if (response.message === 'edit profile successfully') {
+        const userInfo = getUserInfo();
+        setUser({
+          username: userInfo.userName,
+          phoneNumber: userInfo.phoneNumber,
+          image: userInfo.urlImg,
+          lat: userInfo.lat,
+          lng: userInfo.lng,
+          isSeller: userInfo.role,
+          isLoggedIn: true,
+          id: userInfo.id,
+        });
+        setToast(true);
+        setErrMessage('');
+        setTimeout(() => {
+          setToast(false);
+        }, 2000);
+      }
     } catch (err) {
       if (err.response.status === 400) {
         setErrMessage('رقم الهاتف موجود بالفعل');
@@ -102,7 +105,7 @@ function EditProfile() {
   return (
     <div className="pages-container">
 
-      { isToast && <Toasts title="تم بنجاح" body="تم تعديل بياناتك بنجاح" color="#30d94d" />}
+      { toast && <Toasts title="تم بنجاح" body="تم تعديل بياناتك بنجاح" color="#30d94d" />}
       <Title>تعديل الملف الشخصي</Title>
       <div className=" mt-5">
         <div className="h3 mb-4">تعديل معلومات التواصل</div>
