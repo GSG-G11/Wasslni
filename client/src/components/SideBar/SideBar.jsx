@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 import { PositionOptions } from 'mapbox-gl';
-import React, { useEffect, useState } from 'react';
-=======
 import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
->>>>>>> 9e34e7949e8611dcf06b0b8b99aa81dba5807c83
 import { Offcanvas, Button } from 'react-bootstrap';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import UserContext from '../../context/userContext';
