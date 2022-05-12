@@ -38,7 +38,7 @@ function Parcels() {
         <div className="mt-4  cards-container">
 
           {parcels.map((parcel) => (<Card className="card col-xl-4 col-md-10 m-2 shadow-sm" status={parcel.status} name={parcel.name} key={parcel.id} id={parcel.id} />))}
-          <div>{error}</div>
+          {!parcels && <div>{error}</div>}
         </div>
       )}
     </div>
