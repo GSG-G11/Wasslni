@@ -13,30 +13,33 @@ function Profile() {
     fetchUser();
   }, []);
   return (
-    <div className="pages-container">
+    <div>
+
       <div className="header" />
-      <div className="userInfo">
-        <div className="userInfo-right">
-          <img src={user.image} alt="profile" />
+      <div className="pagestt-container">
+        <div className="userInfo">
+          <div className="userInfo-right">
+            <img src={user.image} alt="profile" />
+          </div>
+          <div className="userInfo-left">
+            <p>
+              الإسم :
+              {user.name}
+            </p>
+            <p>
+              الصلاحيات :
+              {user.isSeller ? ' تاجر ' : 'بائع'}
+            </p>
+            <p>
+              رقم الجوال :
+              {user.phoneNumber}
+            </p>
+          </div>
         </div>
-        <div className="userInfo-left">
-          <p>
-            الإسم :
-            {user.name}
-          </p>
-          <p>
-            الصلاحيات :
-            {user.isSeller ? ' تاجر ' : 'بائع'}
-          </p>
-          <p>
-            رقم الجوال :
-            {user.phoneNumber}
-          </p>
+        <h4 className="text-primary m-4">موقعي</h4>
+        <div className="map">
+          <Map />
         </div>
-      </div>
-      <h4 className="text-primary m-4">موقعي</h4>
-      <div className="map">
-        <Map />
       </div>
     </div>
   );

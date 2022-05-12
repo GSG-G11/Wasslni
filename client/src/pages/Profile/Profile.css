@@ -1,11 +1,16 @@
+.pagestt-container{
+    position: relative;
+    margin: 0;
+    padding: 0 18rem 0 0 ;
+}
 .header{
     background-color: #EBBA3D;
-    width: 100,2%;
-    height: 120px;
-    padding: 20px;
-    margin-top: -40px;
-    margin-right: -10px;
-    margin-bottom: 30px;
+    width: 100%;
+    height: 9rem;
+    position: absolute;
+    top: -2.4rem;
+    left: 0;
+    margin-bottom: 2rem;
     position: relative;
 }
 .userInfo{
@@ -15,11 +20,11 @@
     width: 40%;
 }
 .userInfo-right{
-    width: 130px;
-    height: 130px;
+    width: 8rem;
+    height: 8rem;
     position: absolute;
-    top: 40px;
-    right: 320px;
+    top: -8.5rem;
+    right: 20rem;
 }
 .userInfo-left{
     width: 100%;
@@ -37,46 +42,63 @@
 }
 .map{
     width: 60%;
-    height: 400px;
-    margin-bottom: 50px;
+    margin-bottom: 5rem;
 }
 
 @media screen and (max-width: 600px) {
+    .pagestt-container{
+        position: relative;
+        margin: 0;
+        padding: 0 1rem 0 0;
+    }
     .header{
         margin: 0;
-        width: 100,2%;
-        height: 80px;
-        margin-right: -10px;
+        width: 100%;
+        height: 6rem;
     }
     .userInfo{
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-direction: column;
+        margin-top: -0.8rem;
+        width: 100%;
     }
     .userInfo-right{
-        width: 80px;
-        height: 80px;
+        width: 5rem;
+        height: 5rem;
         position: absolute;
-        top: 100px;
-        right: 30px;
+        top: -0.2rem;
+        right: 1rem;
+    }
+    .userInfo-right img{
+        border-radius: 0;
+    }
+    .userInfo-left{
+        margin-top: 5.3rem;
+        width: 100%;
     }
     .map{
         width: 90%;
     }
 }
 @media (min-width:600px) and (max-width:768px) {
+    .pagestt-container{
+        position: relative;
+        margin: 0;
+        padding: 0 2rem 0 0;
+    }
     .header{
         margin: 0;
-        width: 100,5%;
-        margin-right: -10px;
+        width: 100%;
+        height: 9rem;
     }
     .userInfo-right{
-        width: 100px;
-        height: 100px;
+        width: 7rem;
+        height: 7rem;
         position: absolute;
-        top: 130px;
-        right: 30px;
+        top: -6rem;
+        right: 3rem;
     }
 
 }
