@@ -1,18 +1,30 @@
+<<<<<<< HEAD
 import { PositionOptions } from 'mapbox-gl';
 import React, { useEffect, useState } from 'react';
+=======
+import React, { useEffect, useState, useContext } from 'react';
+import axios from 'axios';
+>>>>>>> 9e34e7949e8611dcf06b0b8b99aa81dba5807c83
 import { Offcanvas, Button } from 'react-bootstrap';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import UserContext from '../../context/userContext';
 import staticData from '../../utils/staticData/staticData';
 import './SideBar.css';
 
 function SideBar() {
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  const { setUser } = useContext(UserContext);
   const [ScreenWidth, setScreenWidth] = useState(window.innerWidth);
   const [mobile, setMobile] = useState(false);
 
+  const handleLogOut = async () => {
+    const response = await axios.delete('/api/v1/auth/logout');
+    setUser({});
+    navigate('/login');
+  };
   useEffect(() => {
     window.addEventListener('resize', () => {
       setScreenWidth(window.innerWidth);
@@ -46,7 +58,7 @@ function SideBar() {
           <ul>
             {staticData.map((link) => (
               <NavLink
-                onClick={() => (mobile ? handleClose() : null)}
+                onClick={() => (mobile && link.name !== ' تسجيل الخروج' ? handleClose() : handleLogOut())}
                 to={link.path}
                 className={link.className}
                 aria-current="true"

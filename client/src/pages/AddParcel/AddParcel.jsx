@@ -3,12 +3,13 @@ import './AddParcel.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Button as bootstarpButton, Modal } from 'react-bootstrap';
+import { PropTypes } from 'prop-types';
 import {
   Form, Input, SubmitButton, TextError, Toasts,
 } from '../../components';
 import { addParcelSchema, getBase64Image } from '../../utils';
 
-function AddParcelPage() {
+function AddParcelPage({ parcels, setParcels }) {
   const navigate = useNavigate();
   const [image, setImage] = useState('');
   const [show, setShow] = useState(false);
@@ -35,6 +36,9 @@ function AddParcelPage() {
         price,
         image,
       });
+      const { id, status, name: parcelName } = response.data.data;
+
+      setParcels([...parcels, { id, status, name: parcelName }]);
       setToast(!isToast);
       setShow(!show);
     } catch (error) {
@@ -80,4 +84,8 @@ function AddParcelPage() {
     </div>
   );
 }
+AddParcelPage.propTypes = {
+  parcels: PropTypes.array.isRequired,
+  setParcels: PropTypes.func.isRequired,
+};
 export default AddParcelPage;

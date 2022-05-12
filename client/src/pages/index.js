@@ -1,4 +1,3 @@
-import AddParcelPage from './AddParcel/AddParcel';
 import EditPassword from './EditPassword/EditPassword';
 import EditProfile from './EditProfile/EditProfile';
 import Home from './Home/Home';
@@ -12,5 +11,5 @@ import SMS from './SMS/SMS';
 
 export {
   Home, SMS, Login, Signup, ParcelDetails, Profile, EditPassword, EditProfile,
-  AddParcelPage, Parcels,
+  Parcels,
 };
