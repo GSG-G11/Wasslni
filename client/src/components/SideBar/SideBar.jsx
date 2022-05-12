@@ -1,3 +1,4 @@
+import { PositionOptions } from 'mapbox-gl';
 import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { Offcanvas, Button } from 'react-bootstrap';
@@ -30,13 +31,20 @@ function SideBar() {
       setMobile(false);
     }
   }, [ScreenWidth]);
+  const currentPath = window.location.pathname;
 
   return (
-    <>
-
-      <Button onClick={handleShow} className="btn-light" style={{ padding: '0px', width: 'auto' }}>
+    <div style={{ position: 'relative' }}>
+      <button
+        onClick={handleShow}
+        className={currentPath === '/profile' ? 'burger-menu-' : 'btn-light'}
+        style={{
+          backgroundColor: currentPath === '/profile' ? '#EBBA3D' : '#fff',
+        }}
+        type="button"
+      >
         <i className="fas fa-bars" />
-      </Button>
+      </button>
       <Offcanvas show={!mobile ? true : show} onHide={handleClose} placement="end" scroll backdrop={mobile} style={{ maxWidth: '280px' }}>
 
         <Offcanvas.Header closeButton={mobile}>
@@ -59,7 +67,7 @@ function SideBar() {
       </Offcanvas>
       <Outlet />
 
-    </>
+    </div>
   );
 }
 

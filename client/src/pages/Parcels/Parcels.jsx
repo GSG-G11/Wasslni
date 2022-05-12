@@ -1,11 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState, useContext } from 'react';
+import AddParcelPage from '../AddParcel/AddParcel';
 
 import {
   Card, Loader, Title,
 } from '../../components';
 import UserContext from '../../context/userContext';
-import AddParcelPage from '../AddParcel/AddParcel';
 import './Parcels.css';
 
 function Parcels() {
