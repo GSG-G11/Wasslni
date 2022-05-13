@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import {
   Logo, Title, Input, Form, TextError, Map,
 } from '../../components';
@@ -9,6 +8,7 @@ import Select from '../../components/UI/Select/Select';
 import { signupValidation, getBase64Image, getUserInfo } from '../../utils';
 import UserContext from '../../context/userContext';
 import './Signup.css';
+import http from '../../services/http';
 
 function Signup() {
   const { user, setUser } = useContext(UserContext);
@@ -45,7 +45,8 @@ function Signup() {
       } else {
         isSeller = false;
       }
-      const response = await axios.post('/api/v1/auth/signup', {
+
+      const response = await http.post('/api/v1/auth/signup', {
         code,
         phoneNumber: `+970${phoneNumber}`,
         userName,
@@ -55,16 +56,18 @@ function Signup() {
         lat: user.lat,
         lng: user.lng,
       });
-      const userInfo = getUserInfo();
-      setUser({
-        userName: userInfo.userName,
-        img: userInfo.urlImg,
-        isSeller: userInfo.role,
-        lat: userInfo.lat,
-        lng: userInfo.lng,
-        isLoggedIn: true,
-      });
-      navigate('/parcles');
+      if (response.message === 'signup succeeded') {
+        const userInfo = getUserInfo();
+        setUser({
+          userName: userInfo.userName,
+          img: userInfo.urlImg,
+          isSeller: userInfo.role,
+          lat: userInfo.lat,
+          lng: userInfo.lng,
+          isLoggedIn: true,
+        });
+        navigate('/parcels');
+      }
     } catch (error) {
       if (error.response.status === 406) {
         setErrMessage('رمز التأكيد الذي أدخلته غير صحيح');

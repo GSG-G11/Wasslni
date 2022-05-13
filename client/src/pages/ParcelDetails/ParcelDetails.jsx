@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { Button } from 'react-bootstrap';
 
 import {
   Card, Loader, Map, Property, Title, Toasts,
 } from '../../components';
 import UserContext from '../../context/userContext';
 import './ParcelDetails.css';
+import http from '../../services/http';
 
 function ParcelDetails() {
   const { user: { isSeller } } = useContext(UserContext);
@@ -22,12 +22,15 @@ function ParcelDetails() {
 
   const handleDelete = async () => {
     try {
-      const response = await axios.delete(`/api/v1/parcels/${id}`);
-      setTaostBody('تم حذف الطرد بنجاح');
-      setIsToast(true);
-      setTimeout(() => {
-        navigate(-1);
-      }, 2000);
+      const response = await http.delete(`/api/v1/parcels/${id}`);
+
+      if (response.message === 'parcel deleted') {
+        setTaostBody('تم حذف الطرد بنجاح');
+        setIsToast(true);
+        setTimeout(() => {
+          navigate(-1);
+        }, 1000);
+      }
     } catch (error) {
       if (error.response.status === 404) {
         setMessage('لا يوجد طرد ');
@@ -38,10 +41,12 @@ function ParcelDetails() {
   };
   const getDetails = async () => {
     try {
-      const response = await axios.get(`/api/v1/parcels/${id}`);
-      setLoading(false);
-      setData(response.data.data);
-      setRoute(JSON.parse(response.data.data.coordinates));
+      const response = await http.get(`/api/v1/parcels/${id}`);
+      if (response.message === 'parcels uploaded successfully') {
+        setLoading(false);
+        setData(response.data);
+        setRoute(JSON.parse(response.data.coordinates));
+      }
     } catch (error) {
       if (error.response.status === 404) {
         setMessage('لا يوجد طرد ');
@@ -51,10 +56,13 @@ function ParcelDetails() {
   };
   const handleStatus = async () => {
     try {
-      const response = await axios.put(`/api/v1/parcels/status/${id}`);
-      setData({ ...data, status: true });
-      setTaostBody('تم تغيير الحالة بنجاح');
-      setIsToast(true);
+      const response = await http.put(`/api/v1/parcels/status/${id}`);
+
+      if (response.message === 'status has changed') {
+        setData({ ...data, status: true });
+        setTaostBody('تم تغيير الحالة بنجاح');
+        setIsToast(true);
+      }
     } catch (error) {
       setMessage(error);
     }

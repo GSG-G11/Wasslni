@@ -4,7 +4,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import { SideBar } from './components';
 import UserContext from './context/userContext';
 import {
-  EditPassword,
   EditProfile,
   Home,
   Login,
@@ -36,25 +35,17 @@ function App() {
             path="/"
             element={(
               <div>
-                {' '}
                 <SideBar />
-                {' '}
               </div>
-          )}
+            )}
           >
             <Route path="/parcels" element={<Parcels />} />
             <Route path="/parcels/:id" element={<ParcelDetails />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/editPassword" element={<EditPassword />} />
             <Route path="/editProfile" element={<EditProfile />} />
           </Route>
         )}
-        <Route
-          path="*"
-          element={(
-            <h1>404</h1>
-        )}
-        />
+        <Route path="*" element={<h1>404</h1>} />
       </Routes>
     </>
   );
