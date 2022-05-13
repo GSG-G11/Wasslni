@@ -23,9 +23,9 @@ function Card({
 }
 export default Card;
 Card.propTypes = {
-  name: PropTypes.string.isRequired,
-  status: PropTypes.bool.isRequired,
-  id: PropTypes.number.isRequired,
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  status: PropTypes.bool,
+  id: PropTypes.number,
+  children: PropTypes.node,
+  className: PropTypes.string,
 };

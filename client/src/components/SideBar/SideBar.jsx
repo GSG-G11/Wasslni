@@ -61,6 +61,7 @@ function SideBar() {
                 to={link.path}
                 className={link.className}
                 aria-current="true"
+                key={link.name}
               >
                 {link.name}
               </NavLink>

@@ -12,6 +12,7 @@ import {
   Profile,
   Signup,
   SMS,
+  ErrorPage,
 } from './pages';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -45,7 +46,7 @@ function App() {
             <Route path="/editProfile" element={<EditProfile />} />
           </Route>
         )}
-        <Route path="*" element={<h1>404</h1>} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </>
   );
