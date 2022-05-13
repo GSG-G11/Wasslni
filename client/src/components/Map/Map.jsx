@@ -20,7 +20,7 @@ function Map(props) {
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/streets-v11',
       center: [34.44390732688129, 31.491178194548752],
-      zoom: 12,
+      zoom: 10,
     })
       .addControl(new mapboxgl.NavigationControl())
       .addControl(
@@ -69,7 +69,7 @@ function Map(props) {
           layout: {},
           paint: {
             'line-color': '#CA011A',
-            'line-width': 3,
+            'line-width': 0,
           },
         });
         map.current.on('click', 'GazaArea', (e) => {

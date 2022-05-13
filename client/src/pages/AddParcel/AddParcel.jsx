@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './AddParcel.css';
-import { Button as BootstarpButton, Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import { PropTypes } from 'prop-types';
 import {
   Form, Input, SubmitButton, TextError, Toasts,
@@ -55,9 +55,9 @@ function AddParcelPage({ parcels, setParcels }) {
   return (
     <div className="add-parcel">
       {isToast && <Toasts title="تم  بنجاح" body="تم اضافة الطرد بنجاح" color="#30d94d" />}
-      <BootstarpButton className=" btn-primary" onClick={handleShow}>
+      <button type="button" className="btn btn-outline-primary" onClick={handleShow}>
         اضافة طرد
-      </BootstarpButton>
+      </button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
