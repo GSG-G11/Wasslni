@@ -1,4 +1,3 @@
-/* eslint-disable no-nested-ternary */
 import { PositionOptions } from 'mapbox-gl';
 import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
