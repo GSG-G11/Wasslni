@@ -1,9 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import AddParcelPage from '../AddParcel/AddParcel';
 
-import {
-  Card, Loader, Title,
-} from '../../components';
+import { Card, Loader, Title } from '../../components';
 import UserContext from '../../context/userContext';
 import './Parcels.css';
 import http from '../../services/http';
@@ -40,13 +38,17 @@ function Parcels() {
   useEffect(() => {
     fetchParcels();
   }, []);
+  useEffect(() => {
+    setFilteredParcels(parcels);
+  }, [parcels]);
 
   return (
     <div className="pages-container ">
       <div className={user.isSeller ? 'parcels-header' : null}>
-        {user.isSeller && <AddParcelPage parcels={parcels} setParcels={setParcels} />}
+        {user.isSeller && (
+          <AddParcelPage parcels={parcels} setParcels={setParcels} />
+        )}
         <Title>طرودي</Title>
-
       </div>
       <select
         name="status"
@@ -67,13 +69,22 @@ function Parcels() {
         <option value="notDeliverd" label="لم يتم التسليم">
           لم يتم التسليم
         </option>
-
       </select>
-      {loading ? <Loader /> : (
+      {loading ? (
+        <Loader />
+      ) : (
         <div className="mt-4  cards-container">
-          { filteredParcels.length ? filteredParcels.map((parcel) => (<Card className="card col-xl-4 col-md-10 m-2 shadow-sm" status={parcel.status} name={parcel.name} key={parcel.id} id={parcel.id} />))
-            : parcels.map((parcel) => (<Card className="card col-xl-4 col-md-10 m-2 shadow-sm" status={parcel.status} name={parcel.name} key={parcel.id} id={parcel.id} />))}
-          {!parcels.length && <div>{error}</div>}
+          {filteredParcels.length
+            ? filteredParcels.map((parcel) => (
+              <Card
+                className="card col-xl-4 col-md-10 m-2 shadow-sm"
+                status={parcel.status}
+                name={parcel.name}
+                key={parcel.id}
+                id={parcel.id}
+              />
+            ))
+            : 'لا يوجد طرود حاليا'}
         </div>
       )}
     </div>

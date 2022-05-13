@@ -1,4 +1,6 @@
-import React, { useRef, useEffect, useContext } from 'react';
+import React, {
+  useRef, useEffect, useContext, useState,
+} from 'react';
 
 import mapboxgl from 'mapbox-gl';
 import './Map.css';
@@ -13,14 +15,15 @@ function Map(props) {
   const { lat, lng } = user;
   const mapContainer = useRef(null);
   const map = useRef(null);
+  const [center, setCenter] = useState(lng ? [lng, lat] : [34.44652382899994, 31.496193218759473]);
   mapboxgl.accessToken = 'pk.eyJ1IjoiZmFkeWFsd2F6aXIiLCJhIjoiY2wyM2Q5d25pMDV2OTNjbzBtdDVrcWJ4ZyJ9.eVB-xAdq0rCO-IVUC8GcNg';
   useEffect(() => {
     if (map.current) return;
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/streets-v11',
-      center: [34.44390732688129, 31.491178194548752],
-      zoom: 10,
+      center,
+      zoom: 12,
     })
       .addControl(new mapboxgl.NavigationControl())
       .addControl(
