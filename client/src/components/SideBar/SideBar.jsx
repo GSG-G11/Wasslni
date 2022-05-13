@@ -1,11 +1,12 @@
 import { PositionOptions } from 'mapbox-gl';
 import React, { useEffect, useState, useContext } from 'react';
-import axios from 'axios';
+
 import { Offcanvas, Button } from 'react-bootstrap';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import UserContext from '../../context/userContext';
 import staticData from '../../utils/staticData/staticData';
 import './SideBar.css';
+import http from '../../services/http';
 
 function SideBar() {
   const navigate = useNavigate();
@@ -17,9 +18,11 @@ function SideBar() {
   const [mobile, setMobile] = useState(false);
 
   const handleLogOut = async () => {
-    const response = await axios.delete('/api/v1/auth/logout');
-    setUser({});
-    navigate('/login');
+    const response = await http.delete('/api/v1/auth/logout');
+    if (response.message === 'logout successfully') {
+      setUser({});
+      navigate('/login');
+    }
   };
   useEffect(() => {
     window.addEventListener('resize', () => {

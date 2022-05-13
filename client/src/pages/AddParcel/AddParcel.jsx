@@ -8,6 +8,7 @@ import {
   Form, Input, SubmitButton, TextError, Toasts,
 } from '../../components';
 import { addParcelSchema, getBase64Image } from '../../utils';
+import http from '../../services/http';
 
 function AddParcelPage({ parcels, setParcels }) {
   const navigate = useNavigate();
@@ -30,22 +31,22 @@ function AddParcelPage({ parcels, setParcels }) {
   const onSubmit = async ({ name, phoneNumber, price }) => {
     try {
       setErrMessage('');
-      const response = await axios.post('/api/v1/parcels/', {
+      const response = await http.post('/api/v1/parcels/', {
         name,
         phoneNumber: `+970${phoneNumber}`,
         price,
         image,
       });
-      const { id, status, name: parcelName } = response.data.data;
 
-      setParcels([...parcels, { id, status, name: parcelName }]);
-      setToast(!isToast);
-      setShow(!show);
+      const { id, status, name: parcelName } = response.data;
+      if (response.message === 'The parcel has been added successfully ') {
+        setParcels([...parcels, { id, status, name: parcelName }]);
+        setToast(!isToast);
+        setShow(!show);
+      }
     } catch (error) {
       if (error.response.status === 400) {
         setErrMessage(' لا يوجد زبون بهذا الرقم   ');
-      } else {
-        navigate('./error');
       }
     }
   };

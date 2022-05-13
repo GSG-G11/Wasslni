@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import './Profile.css';
 import Map from '../../components/Map/Map';
+import http from '../../services/http';
 
 function Profile() {
   const [user, setUser] = useState({});
+  const fetchUser = async () => {
+    const response = await http.get('/api/v1/profile');
+
+    if (response.message === 'success') {
+      setUser(response.data[0]);
+    }
+  };
   useEffect(() => {
-    const fetchUser = async () => {
-      const response = await axios.get('/api/v1/profile');
-      setUser(response.data.data[0]);
-    };
     fetchUser();
   }, []);
   return (

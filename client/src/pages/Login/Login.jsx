@@ -1,12 +1,13 @@
 import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+
 import {
   Form, Input, Logo, TextError, Title,
 } from '../../components';
 import { getUserInfo, loginValidation } from '../../utils';
 import { SubmitButton } from '../../components/Form';
 import UserContext from '../../context/userContext';
+import http from '../../services/http';
 
 function Login() {
   const [errMessage, setErrMessage] = useState('');
@@ -15,26 +16,26 @@ function Login() {
 
   const onSubmit = async (e) => {
     try {
-      await axios.post('/api/v1/auth/login', {
+      const response = await http.post('/api/v1/auth/login', {
         phoneNumber: `+970${e.phoneNumber}`, password: e.password,
       });
-      const userInfo = getUserInfo();
-      setUser({
-        username: userInfo.userName,
-        phoneNumber: userInfo.phoneNumber,
-        image: userInfo.urlImg,
-        lat: userInfo.lat,
-        lng: userInfo.lng,
-        isSeller: userInfo.role,
-        isLoggedIn: true,
-        id: userInfo.id,
-      });
-      navigate('/parcels');
+      if (response.message === 'login successfully') {
+        const userInfo = getUserInfo();
+        setUser({
+          username: userInfo.userName,
+          phoneNumber: userInfo.phoneNumber,
+          image: userInfo.urlImg,
+          lat: userInfo.lat,
+          lng: userInfo.lng,
+          isSeller: userInfo.role,
+          isLoggedIn: true,
+          id: userInfo.id,
+        });
+        navigate('/parcels');
+      }
     } catch (err) {
       if (err.response.status === 400) {
         setErrMessage('كلمة المرور أو رقم الهاتف غير صحيح');
-      } else if (err.response.status === 500) {
-        navigate('/error');
       }
     }
   };
@@ -69,7 +70,7 @@ function Login() {
 
             <SubmitButton title="تأكيد" />
           </Form>
-          <Link to="/signup" className="mt-2">
+          <Link to="/verify" className="mt-2">
             ليس لديك حساب ؟
           </Link>
         </div>

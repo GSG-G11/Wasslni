@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import './EditProfile.css';
-import axios from 'axios';
+
 import { useNavigate } from 'react-router-dom';
 
 import {
@@ -8,7 +8,10 @@ import {
 } from '../../components';
 import { SubmitButton } from '../../components/Form';
 import {
-  editPasswordValidation, editProfileValidaiton, getBase64Image, getUserInfo,
+  editPasswordValidation,
+  editProfileValidaiton,
+  getBase64Image,
+  getUserInfo,
 } from '../../utils';
 import UserContext from '../../context/userContext';
 import Map from '../../components/Map/Map';
@@ -48,18 +51,24 @@ function EditProfile() {
       setErrMessage(' الرجاء اختيار صورة');
       return;
     }
-    if (oldLat === lat
+    if (
+      oldLat === lat
       && oldLng === lng
       && !img
-       && values.username === username
-      && values.phoneNumber === phoneNumber) {
+      && values.username === username
+      && values.phoneNumber === phoneNumber
+    ) {
       setErrMessage('لا يوجد تغييرات');
       return;
     }
 
     try {
       const response = await http.put('/api/v1/profile', {
-        userName: values.username, phoneNumber: `+970${values.phoneNumber}`, img, lat, lng,
+        userName: values.username,
+        phoneNumber: `+970${values.phoneNumber}`,
+        img,
+        lat,
+        lng,
       });
 
       if (response.message === 'edit profile successfully') {
@@ -88,13 +97,17 @@ function EditProfile() {
   };
   const handleSumbitPassword = async (values) => {
     if (values.newPassword === values.oldPassword) {
-      setPasswordErrMessage('كلمة المرور القديمة وكلمة المرور الجديدة متشابهتان ');
+      setPasswordErrMessage(
+        'كلمة المرور القديمة وكلمة المرور الجديدة متشابهتان ',
+      );
     } else {
       try {
-        const response = await axios.put('/api/v1/profile/password', values);
-        const logoutResponse = await axios.delete('/api/v1/auth/logout');
-        setUser({});
-        navigate('/login');
+        const response = await http.put('/api/v1/profile/password', values);
+        if (response.message === 'password edited') {
+          const logoutResponse = await http.delete('/api/v1/auth/logout');
+          setUser({});
+          navigate('/login');
+        }
       } catch (err) {
         if (err.response.status === 400) {
           setPasswordErrMessage('كلمة المرور غير صحيحة');
@@ -104,8 +117,13 @@ function EditProfile() {
   };
   return (
     <div className="pages-container">
-
-      { toast && <Toasts title="تم بنجاح" body="تم تعديل بياناتك بنجاح" color="#30d94d" />}
+      {toast && (
+        <Toasts
+          title="تم بنجاح"
+          body="تم تعديل بياناتك بنجاح"
+          color="#30d94d"
+        />
+      )}
       <Title>تعديل الملف الشخصي</Title>
       <div className=" mt-5">
         <div className="h3 mb-4">تعديل معلومات التواصل</div>
@@ -114,26 +132,34 @@ function EditProfile() {
           onSubmit={handleSubmitInfo}
           validationSchema={editProfileValidaiton}
         >
-          {' '}
           <div className="edit-profile-container">
             <div className="edit-profile-inputs-container">
               <div className="h5 mb-4">تعديل الصورة الشخصية</div>
 
-              <input name="image" type="file" className="form-control mb-2" id="customFile" onChange={onChangeImage} />
-              { imgErr && <TextError>{imgErr}</TextError>}
-              {!img && !imgErr && <img src={image} alt="profile" className="edit-profile-img mb-3" />}
-              { img && <img src={img} alt="profile" className="edit-profile-img mb-3" />}
-              <Input
-                name="username"
-                type="text"
-                placeholder="اسم المستخدم"
-
+              <input
+                name="image"
+                type="file"
+                className="form-control mb-2"
+                id="customFile"
+                onChange={onChangeImage}
               />
-              <Input
-                name="phoneNumber"
-                type="text"
-                placeholder="رقم الهاتف "
-              />
+              {imgErr && <TextError>{imgErr}</TextError>}
+              {!img && !imgErr && (
+                <img
+                  src={image}
+                  alt="profile"
+                  className="edit-profile-img mb-3"
+                />
+              )}
+              {img && (
+                <img
+                  src={img}
+                  alt="profile"
+                  className="edit-profile-img mb-3"
+                />
+              )}
+              <Input name="username" type="text" placeholder="اسم المستخدم" />
+              <Input name="phoneNumber" type="text" placeholder="رقم الهاتف " />
             </div>
             <div className="editProfile-map">
               <div className="h5 mb-4">تعديل موقع التوصيل </div>
@@ -146,7 +172,6 @@ function EditProfile() {
             {errMessage && <TextError>{errMessage}</TextError>}
           </div>
         </Form>
-
       </div>
 
       <div className="edit-password-container mt-5">
@@ -171,9 +196,7 @@ function EditProfile() {
           </div>
 
           {passwordErrMessage && <TextError>{passwordErrMessage}</TextError>}
-
         </Form>
-
       </div>
     </div>
   );
