@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import { PositionOptions } from 'mapbox-gl';
 import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
@@ -54,7 +55,7 @@ function SideBar() {
           <ul>
             {staticData.map((link) => (
               <NavLink
-                onClick={() => (mobile && link.name !== ' تسجيل الخروج' ? handleClose() : handleLogOut())}
+                onClick={() => (link.name === ' تسجيل الخروج' ? handleLogOut() : (mobile ? handleClose() : null))}
                 to={link.path}
                 className={link.className}
                 aria-current="true"
