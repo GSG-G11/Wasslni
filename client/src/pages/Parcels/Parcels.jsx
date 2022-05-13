@@ -57,7 +57,7 @@ function Parcels() {
         onChange={handleFilter}
         style={{
           width: '150px',
-          margin: ' 20px 10px 0 0',
+          margin: ' 20px 25px 0 0',
         }}
       >
         <option value="all" label="الكل  ">
@@ -77,7 +77,7 @@ function Parcels() {
           {filteredParcels.length
             ? filteredParcels.map((parcel) => (
               <Card
-                className="card col-xl-4 col-md-10 m-2 shadow-sm"
+                className="card col-xl-3 col-md-10 m-4 shadow-sm"
                 status={parcel.status}
                 name={parcel.name}
                 key={parcel.id}

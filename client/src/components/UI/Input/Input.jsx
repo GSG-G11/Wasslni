@@ -22,7 +22,6 @@ function Input({
 
       <label htmlFor={name}>
         {placeholder}
-        {' '}
       </label>
       <ErrorMessage name={name} component={TextError} className="error-message" />
     </div>

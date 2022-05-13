@@ -10,7 +10,7 @@ function Home() {
       <Logo />
       <div className="content">
         <p className="btn-shine">موقع مختص لتوصيل الطرود لكافة محافظات قطاع غزة , بطريقة آمنة ووقت قياسي</p>
-        <Button onClick={() => navigate('./verify')}>ابدأ</Button>
+        <button type="button" className="btn btn-primary m-0" onClick={() => navigate('./verify')}>ابدأ</button>
       </div>
     </div>
   );
