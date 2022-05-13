@@ -1,17 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import { PositionOptions } from 'mapbox-gl';
+import React, { useEffect, useState, useContext } from 'react';
+import axios from 'axios';
 import { Offcanvas, Button } from 'react-bootstrap';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import UserContext from '../../context/userContext';
 import staticData from '../../utils/staticData/staticData';
 import './SideBar.css';
 
 function SideBar() {
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  const { setUser } = useContext(UserContext);
   const [ScreenWidth, setScreenWidth] = useState(window.innerWidth);
   const [mobile, setMobile] = useState(false);
 
+  const handleLogOut = async () => {
+    const response = await axios.delete('/api/v1/auth/logout');
+    setUser({});
+    navigate('/login');
+  };
   useEffect(() => {
     window.addEventListener('resize', () => {
       setScreenWidth(window.innerWidth);
@@ -22,13 +31,20 @@ function SideBar() {
       setMobile(false);
     }
   }, [ScreenWidth]);
+  const currentPath = window.location.pathname;
 
   return (
-    <>
-
-      <Button onClick={handleShow} className="btn-light" style={{ padding: '0px', width: 'auto' }}>
+    <div style={{ position: 'relative' }}>
+      <button
+        onClick={handleShow}
+        className={currentPath === '/profile' ? 'burger-menu-' : 'btn-light'}
+        style={{
+          backgroundColor: currentPath === '/profile' ? '#EBBA3D' : '#fff',
+        }}
+        type="button"
+      >
         <i className="fas fa-bars" />
-      </Button>
+      </button>
       <Offcanvas show={!mobile ? true : show} onHide={handleClose} placement="end" scroll backdrop={mobile} style={{ maxWidth: '280px' }}>
 
         <Offcanvas.Header closeButton={mobile}>
@@ -38,7 +54,7 @@ function SideBar() {
           <ul>
             {staticData.map((link) => (
               <NavLink
-                onClick={() => (mobile ? handleClose() : null)}
+                onClick={() => (mobile && link.name !== ' تسجيل الخروج' ? handleClose() : handleLogOut())}
                 to={link.path}
                 className={link.className}
                 aria-current="true"
@@ -51,7 +67,7 @@ function SideBar() {
       </Offcanvas>
       <Outlet />
 
-    </>
+    </div>
   );
 }
 

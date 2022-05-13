@@ -1,0 +1,16 @@
+.btn-light {
+    padding: 0px;
+    width: 1rem;
+    margin: 1rem 2rem 0 0;
+    z-index: 5;
+    border: none;
+}
+.burger-menu- {
+  padding: 0px;
+  width: 1rem;
+  top: 1rem;
+  right: 2rem;
+  z-index: 5;
+  position: absolute;
+  border: none;
+}
