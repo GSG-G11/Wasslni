@@ -54,7 +54,7 @@ function SMS() {
 
             <SubmitButton title="تأكيد" />
           </Form>
-          <Link to="/signin" className="mt-2">
+          <Link to="/login" className="mt-2">
             هل لديك حساب بالفعل ؟
           </Link>
         </div>
