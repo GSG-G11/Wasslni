@@ -14,6 +14,8 @@
   "license": "ISC",
   "dependencies": {
     "@jest/globals": "^27.5.1",
+    "@sentry/node": "^6.19.7",
+    "@sentry/tracing": "^6.19.7",
     "babel-jest": "^27.5.1",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^1.29.1",
