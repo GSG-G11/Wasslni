@@ -65,6 +65,7 @@ function Signup() {
           lat: userInfo.lat,
           lng: userInfo.lng,
           isLoggedIn: true,
+          phoneNumber: userInfo.phoneNumber,
         });
         navigate('/parcels');
       }
