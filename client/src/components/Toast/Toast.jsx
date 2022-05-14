@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import {
   Row, Col, Button, Toast,
 } from 'react-bootstrap';
-import './Toast.css';
 import ToastContainer from 'react-bootstrap/ToastContainer';
 
 function Toasts({ title, body, color }) {

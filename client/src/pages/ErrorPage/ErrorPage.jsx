@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import pageNotFound from '../../assets/pageNotFound.png';
 import { Title } from '../../components';
-import './ErrorPage.css';
 
 function ErrorPage() {
   const navigate = useNavigate();

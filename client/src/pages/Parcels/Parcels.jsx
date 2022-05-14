@@ -52,12 +52,13 @@ function Parcels() {
       </div>
       <select
         name="status"
-        className="form-select"
+        className="form-select shadow-none"
         aria-label="Default select example"
         onChange={handleFilter}
         style={{
           width: '150px',
           margin: ' 20px 25px 0 0',
+
         }}
       >
         <option value="all" label="الكل  ">

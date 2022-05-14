@@ -3,7 +3,7 @@ import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import {
-  Form, Image, Input, Logo, TextError, Title,
+  Form, Input, Logo, TextError, Title,
 } from '../../components';
 import { smsValidation } from '../../utils';
 import { SubmitButton } from '../../components/Form';
