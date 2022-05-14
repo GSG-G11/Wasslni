@@ -16,7 +16,7 @@ function Property({ keyWord, value }) {
 
 Property.propTypes = {
   keyWord: propTypes.string.isRequired,
-  value: propTypes.string.isRequired,
+  value: propTypes.any,
 };
 
 export default Property;

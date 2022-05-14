@@ -19,7 +19,7 @@ function Profile() {
     <div>
 
       <div className="header" />
-      <div className="pagestt-container">
+      <div className="page-container">
         <div className="userInfo">
           <div className="userInfo-right">
             <img src={user.image} alt="profile" />

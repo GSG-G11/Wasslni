@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import './AddParcel.css';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { Button as bootstarpButton, Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import { PropTypes } from 'prop-types';
 import {
   Form, Input, SubmitButton, TextError, Toasts,
@@ -11,11 +9,10 @@ import { addParcelSchema, getBase64Image } from '../../utils';
 import http from '../../services/http';
 
 function AddParcelPage({ parcels, setParcels }) {
-  const navigate = useNavigate();
   const [image, setImage] = useState('');
   const [show, setShow] = useState(false);
   const [errMessage, setErrMessage] = useState('');
-  const [ImgErr, setImgErr] = useState('');
+  const [imgErr, setImgErr] = useState('');
   const [isToast, setToast] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -29,6 +26,10 @@ function AddParcelPage({ parcels, setParcels }) {
     }
   };
   const onSubmit = async ({ name, phoneNumber, price }) => {
+    if (imgErr) {
+      setErrMessage(' الرجاء اختيار صورة');
+      return;
+    }
     try {
       setErrMessage('');
       const response = await http.post('/api/v1/parcels/', {
@@ -54,9 +55,9 @@ function AddParcelPage({ parcels, setParcels }) {
   return (
     <div className="add-parcel">
       {isToast && <Toasts title="تم  بنجاح" body="تم اضافة الطرد بنجاح" color="#30d94d" />}
-      <bootstarpButton className="btn btn-outline-primary" variant="primary" onClick={handleShow}>
+      <button type="button" className="btn btn-outline-primary" onClick={handleShow}>
         اضافة طرد
-      </bootstarpButton>
+      </button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -75,7 +76,7 @@ function AddParcelPage({ parcels, setParcels }) {
             <Input name="price" type="text" placeholder="ادخل سعر الطرد" />
             <label htmlFor="customFile" style={{ marginBottom: '5px' }}>اختر صورة الطرد</label>
             <input name="image" type="file" className="form-control" id="customFile" onChange={onChangeImage} />
-            {ImgErr && <TextError>{ImgErr}</TextError>}
+            {imgErr && <TextError>{imgErr}</TextError>}
             <div className="d-flex justify-content-end "><SubmitButton title="تأكيد" /></div>
             {errMessage && <TextError>{errMessage}</TextError>}
           </Form>

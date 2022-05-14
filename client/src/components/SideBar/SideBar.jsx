@@ -1,7 +1,5 @@
-import { PositionOptions } from 'mapbox-gl';
 import React, { useEffect, useState, useContext } from 'react';
-
-import { Offcanvas, Button } from 'react-bootstrap';
+import { Offcanvas } from 'react-bootstrap';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import UserContext from '../../context/userContext';
 import staticData from '../../utils/staticData/staticData';
@@ -53,7 +51,7 @@ function SideBar() {
         <Offcanvas.Header closeButton={mobile}>
           <Offcanvas.Title className="text-primary mb-4">وصلني</Offcanvas.Title>
         </Offcanvas.Header>
-        <Offcanvas.Body>
+        <Offcanvas.Body className="mt-4">
           <ul>
             {staticData.map((link) => (
               <NavLink
@@ -61,7 +59,10 @@ function SideBar() {
                 to={link.path}
                 className={link.className}
                 aria-current="true"
+                key={link.name}
               >
+                {link.icon}
+                {'  '}
                 {link.name}
               </NavLink>
             ))}

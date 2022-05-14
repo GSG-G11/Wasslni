@@ -89,7 +89,7 @@ function ParcelDetails() {
       {message ? <h1>{message}</h1> : ''}
       {loading ? <Loader /> : (
         <div className="d-flex flex-column justify-content-center ">
-          <Card className="card col-md-8  m-2 shadow-sm">
+          <Card className="card col-md-8  m-2 shadow-sm" id={+id}>
             <div className="row d-flex align-items-center">
               <div className="col-lg-6 col-10">
                 {isSeller ? <Property keyWord="الزبون" value={data.name} /> : ''}

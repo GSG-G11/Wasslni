@@ -1,8 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { Field, ErrorMessage } from 'formik';
-import './Input.css';
-
 import PropTypes from 'prop-types';
 import TextError from '../../Form/ErrorMsg/ErrorMsg';
 
@@ -22,7 +20,6 @@ function Input({
 
       <label htmlFor={name}>
         {placeholder}
-        {' '}
       </label>
       <ErrorMessage name={name} component={TextError} className="error-message" />
     </div>
