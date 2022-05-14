@@ -1,11 +1,12 @@
 import React, {
   useRef, useEffect, useContext, useState,
 } from 'react';
-
-import mapboxgl from 'mapbox-gl';
+import PropTypes from 'prop-types';
+// eslint-disable-next-line import/no-webpack-loader-syntax, import/no-unresolved
+import mapboxgl from '!mapbox-gl';
 import './Map.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import PropTypes from 'prop-types';
+
 import gazaBoarders from './gazaBoarders';
 import UserContext from '../../context/userContext';
 
