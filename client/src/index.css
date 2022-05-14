@@ -4,7 +4,14 @@
   margin: 0;
   box-sizing: border-box;
 }
-
+.title{
+  padding-right: 300px;
+}
+@media (max-width : 769px) {
+  .title{
+    padding: 10px 20px;
+  }
+}
 .form-label-group {
   position: relative;
   margin-bottom: 1rem;
