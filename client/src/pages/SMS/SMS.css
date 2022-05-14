@@ -4,6 +4,15 @@
   align-items: center;
   height: 100%;
   width: 100%;
+  position: relative;
+  animation-name: example;
+  animation-duration: 2s ;
+}
+
+@keyframes example {
+  0%  { left:200px; top:200px;}
+  100% {left:0px; top:0px;}
+
 }
 .background {
   background-image: url("../../assets/login.jpg");
