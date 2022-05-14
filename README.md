@@ -20,7 +20,7 @@ the website works by select the way from the sender to the reciver person on the
 also every user have an account with his location, number and so on as a sender or reciver person.
     <br />
     <br />
-        <a href="https://wasslni.herokuapp.com/">View Demo</a>
+        <a href="">View Demo</a>
           <br />
       <a href="https://www.figma.com/file/aiNE7D3hhKHfbvlIKq37ra/Untitled">Figma</a>
 
@@ -67,8 +67,8 @@ also every user have an account with his location, number and so on as a sender 
 * [Cloudinary](https://cloudinary.com/)
 * [Twilio](https://www.twilio.com/)
 * [Mapbox](https://docs.mapbox.com/mapbox-gl-js/guides/)
-* * [Formik](https://formium.io/)
-* * [Tostify ](https://dan.com/buy-domain/tostify.com?redirected=true&tld=com)
+ * [Formik](https://formium.io/)
+* [Tostify ](https://dan.com/buy-domain/tostify.com?redirected=true&tld=com)
 
 
 
@@ -151,7 +151,3 @@ Project Link: [Wasslni](https://github.com/GSG-G11/wasslni)
 [issues-shield]: https://img.shields.io/github/issues/GSG-G11/wasslni?style=for-the-badge
 [issues-url]: https://github.com/GSG-G11/wasslni/issues
 [product-screenshot]: images/screenshot.png
-
-
-
- 
