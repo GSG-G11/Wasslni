@@ -1,7 +1,7 @@
 .page-container{
     position: relative;
     margin: 0;
-    padding: 0 18rem 0 0 ;
+    padding: 0 20rem 0 0 ;
 }
 .header{
     background-color: #EBBA3D;
@@ -45,8 +45,8 @@
     margin-bottom: 5rem;
 }
 
-@media screen and (max-width: 600px) {
-    .pagestt-container{
+@media  (max-width: 769px) {
+    .page-container{
         position: relative;
         margin: 0;
         padding: 0 1rem 0 0;
@@ -82,7 +82,7 @@
         width: 90%;
     }
 }
-@media (min-width:600px) and (max-width:768px) {
+@media (max-width:768px) {
     .pagestt-container{
         position: relative;
         margin: 0;
