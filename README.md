@@ -151,7 +151,3 @@ Project Link: [Wasslni](https://github.com/GSG-G11/wasslni)
 [issues-shield]: https://img.shields.io/github/issues/GSG-G11/wasslni?style=for-the-badge
 [issues-url]: https://github.com/GSG-G11/wasslni/issues
 [product-screenshot]: images/screenshot.png
-
-
-
- 
