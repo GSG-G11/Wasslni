@@ -1,0 +1,23 @@
+{
+  "name": "wasslni",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd server && npm start",
+    "client": "cd client && npm start",
+    "server": "cd server && npm run dev",
+    "heroku-postbuild": " cd server && npm i && npm run build && cd ../client && npm i && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GSG-G11/Wasslni.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GSG-G11/Wasslni/issues"
+  },
+  "homepage": "https://github.com/GSG-G11/Wasslni#readme"
+}
