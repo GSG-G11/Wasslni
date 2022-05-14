@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './AddParcel.css';
 import { Modal } from 'react-bootstrap';
 import { PropTypes } from 'prop-types';
@@ -7,6 +7,7 @@ import {
 } from '../../components';
 import { addParcelSchema, getBase64Image } from '../../utils';
 import http from '../../services/http';
+import UserContext from '../../context/userContext';
 
 function AddParcelPage({ parcels, setParcels }) {
   const [image, setImage] = useState('');
@@ -14,6 +15,7 @@ function AddParcelPage({ parcels, setParcels }) {
   const [errMessage, setErrMessage] = useState('');
   const [imgErr, setImgErr] = useState('');
   const [isToast, setToast] = useState(false);
+  const { user: { phoneNumber: phoneNumberContext } } = useContext(UserContext);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const onChangeImage = async (e) => {
@@ -26,6 +28,10 @@ function AddParcelPage({ parcels, setParcels }) {
     }
   };
   const onSubmit = async ({ name, phoneNumber, price }) => {
+    if (phoneNumberContext.slice(4) === phoneNumber) {
+      setErrMessage('   لا يمكن اضافة طرد لنفسك , الرجاء تغيير الرقم');
+      return;
+    }
     if (imgErr) {
       setErrMessage(' الرجاء اختيار صورة');
       return;
