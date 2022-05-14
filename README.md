@@ -67,8 +67,8 @@ also every user have an account with his location, number and so on as a sender 
 * [Cloudinary](https://cloudinary.com/)
 * [Twilio](https://www.twilio.com/)
 * [Mapbox](https://docs.mapbox.com/mapbox-gl-js/guides/)
-* * [Formik](https://formium.io/)
-* * [Tostify ](https://dan.com/buy-domain/tostify.com?redirected=true&tld=com)
+ * [Formik](https://formium.io/)
+* [Tostify ](https://dan.com/buy-domain/tostify.com?redirected=true&tld=com)
 
 
 
