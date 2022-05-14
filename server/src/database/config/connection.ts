@@ -27,7 +27,9 @@ switch (NODE_ENV) {
 
 const option = {
   connectionString: dburl,
-  ssl: false,
+  ssl: process.env.NODE_ENV === 'production'
+    ? { rejectUnauthorized: false }
+    : false,
 };
 
 const connection = new Pool(option);
