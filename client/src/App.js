@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { SideBar } from './components';
 import UserContext from './context/userContext';
+
 import {
   EditProfile,
   Home,
@@ -17,6 +18,7 @@ import {
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
+  const location = useLocation();
   const {
     user: { isLoggedIn },
   } = useContext(UserContext);
@@ -37,6 +39,7 @@ function App() {
             element={(
               <div>
                 <SideBar />
+                {location.pathname === '/' ? <h2 className="title">اضغط على طرودي للبدء</h2> : null}
               </div>
             )}
           >
