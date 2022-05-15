@@ -78,7 +78,7 @@ function Parcels() {
           {filteredParcels.length
             ? filteredParcels.map((parcel) => (
               <Card
-                className="card col-xl-3 col-md-10 m-4 shadow-sm"
+                className="card col-xl-3 col-md-10 m-4 shadow-sm parcel-card"
                 status={parcel.status}
                 name={parcel.name}
                 key={parcel.id}

@@ -3,7 +3,18 @@
     background-size: cover;
     height: 100vh;
     width: 100vw;
+   
 }
+.sms-container{
+     position: relative;
+    animation-name: example;
+  animation-duration: 2s ;
+}
+@keyframes example {
+    0%  { left:100px; top:100px;}
+    100% {left:0px; top:0px;}
+  
+  }
 @media  (max-width: 1250px) {
     .login-container{
         background-image: url('../../assets/loginRes.jpg');
