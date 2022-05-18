@@ -46,7 +46,7 @@ function SMS() {
               <Input
                 name="phoneNumber"
                 type="text"
-                placeholder="ادخل رقم هاتفك مبدوء ب 59"
+                placeholder="ادخل رقم هاتفك مبدوء ب   59 أو 56"
                 className="sms-input"
               />
 
