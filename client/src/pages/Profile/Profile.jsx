@@ -1,23 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import './Profile.css';
 import Map from '../../components/Map/Map';
 import http from '../../services/http';
+import UserContext from '../../context/userContext';
 
 function Profile() {
-  const [user, setUser] = useState({});
-  const fetchUser = async () => {
-    const response = await http.get('/api/v1/profile');
+  const { user } = useContext(UserContext);
 
-    if (response.message === 'success') {
-      setUser(response.data[0]);
-    }
-  };
-  useEffect(() => {
-    fetchUser();
-  }, []);
   return (
     <div>
-
       <div className="header" />
       <div className="page-container">
         <div className="userInfo">
