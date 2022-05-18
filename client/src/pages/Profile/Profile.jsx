@@ -18,11 +18,11 @@ function Profile() {
           <div className="userInfo-left">
             <p>
               الإسم :
-              {user.name}
+              {user.username}
             </p>
             <p>
               الصلاحيات :
-              {user.isSeller ? ' تاجر ' : 'بائع'}
+              {user.role ? 'مشتري' : 'بائع'}
             </p>
             <p>
               رقم الجوال :
