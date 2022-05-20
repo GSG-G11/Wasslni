@@ -1,6 +1,7 @@
 .edit-password-form{
     display: flex;
     justify-content: space-around;
+    align-items: center;
    
 }
 .edit-password-form input{
@@ -13,7 +14,6 @@
 }
 .edit-password-form button{
     margin:0;
-    height: 45px;
     align-self: flex-start;
 }
 .edit-profile-container{
