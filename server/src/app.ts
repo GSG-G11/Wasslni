@@ -30,8 +30,7 @@ app.use(Sentry.Handlers.requestHandler());
 app.use(Sentry.Handlers.tracingHandler());
 
 app.set('port', PORT || 5000);
-app.use([express.json(), express.urlencoded({ extended: true }), cookieParser()]);
-
+app.use([express.json({ limit: '5mb' }), express.urlencoded({ limit: '5mb', extended: true }), cookieParser()]);
 app.use('/api/v1', router);
 
 if (NODE_ENV === 'production') {

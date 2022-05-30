@@ -40,6 +40,6 @@
     "react/jsx-no-constructed-context-values": 0,
     "no-param-reassign":0,
     "no-nested-ternary":0,
-    "click-events-have-key-events":0,
+    "click-events-have-key-events":0
   }
 }
